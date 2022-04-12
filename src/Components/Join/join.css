@@ -1,0 +1,78 @@
+.app__join {
+    height: 100vh;
+    width: 100vw;
+}
+
+.app__join-wrapper {
+    height: 100%;
+    width: 100%;
+    display: flex;
+}
+
+.app__join-img {
+    width: 50%;
+    height: 100%;
+    background-image: url('https://dr.savee-cdn.com/things/6/2/544656d97f6444a09504c0.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+
+.app__join-form {
+    height: 100%;
+    width: 50%;
+    background-color: rgb(6 6 6);
+}
+
+.app__join-form-wrapper {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.app__join-form-wrapper input {
+    width: 18rem;
+    height: 3.5rem;
+    color: #c6c6c6;
+    border-bottom: 1px solid #303030;
+}
+
+.app__join-form-wrapper button {
+    width: 20rem;
+    height: 3rem;
+    color: black;
+    background-color: white;
+    border-radius: 5rem;
+    margin-top: 2rem;
+}
+
+.app__join-form-wrapper button:hover {
+    background-color: rgb(228, 228, 228);
+}
+
+.terms {
+    color: white;
+    margin-top: 1.5rem;
+    font-weight: 500;
+    font-size: 14px;
+}
+
+.app__logo-join {
+    margin-top: 4rem;
+    color: white;
+    transition: .2s;
+    cursor: pointer;
+}
+
+.app__logo-join:hover {
+    color: #404040;
+}
+
+.letsDoThis {
+    margin-top: 3rem;
+    margin-bottom: 2rem;
+    color: #a3a3a3;
+    font-weight: 500;
+    font-size: 23px;
+}

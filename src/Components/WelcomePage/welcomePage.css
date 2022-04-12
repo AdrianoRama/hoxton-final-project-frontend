@@ -5,28 +5,110 @@
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    background-image: url('/src/Assets/bg.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+
+.app__welcome-wrapper {
+    height: 100%;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.8);
+}
+
+.app__welcome-main {
+    height: 80%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .app__logo {
-    flex: 1;
+    margin-top: 3rem;
+    color: white;
 }
 
 .app__text {
-    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 80%;
+    height: 75%;
+    color: white;
 }
 
-/* .app__form {
+.app__text h1 {
+    font-weight: 900;
+    font-size: 100px;
+    color: white;
+}
 
-} */
+.app__text p {
+    font-weight: 500;
+    font-size: 23px;
+    margin-top: 1.5rem;
+    color: white;
+}
+
+.app__form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.app__form .join {
+    border-radius: 5rem;
+    width: 6rem;
+    height: 3rem;
+    background-color: white;
+    color: black;
+}
+
+.app__form .join:hover {
+    background-color: rgb(228, 228, 228);
+}
+
+.app__form .login {
+    width: 6rem;
+    height: 3rem;
+    color: black;
+    color: white;
+}
+
+.app__form .login:hover {
+    color: blue;
+    background-color: transparent;
+}
 
 .app__footer {
     display: flex;
+    width: 100%;
+    color: white;
 }
 
 .app__footer-right ul {
+    width: 50%;
     display: flex;
 }
 
+li {
+    list-style: none;
+    margin-right: 3rem;
+    margin-top: 5.5rem;
+    font-weight: 500;
+    font-size: 14px;
+}
+
 .app__footer-left {
-    display: flex;
+    width: 100%;
+    margin-left: 3rem;
+    margin-top: 5.5rem;
+}
+
+.app__footer-left h3 {
+    font-weight: normal;
+    font-size: 15px;
 }
