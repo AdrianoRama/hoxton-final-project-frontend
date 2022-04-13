@@ -63,17 +63,26 @@ function ProfilePage() {
                         <li className='profile_li'>{userFound?._count.followedBy} Followers</li>
                     </ul>
                 </div>
-                <div className='profile_savedImages'>
-                    <ul>
-                        {
-                            userFoundImages.map(image => {
-                                return <li key={image.id}>
-                                    <img src={image.link} alt="" />
-                                </li>
-                            })
-                        }
-                    </ul>
+                <div className='profile_imagesContainer'>
+                    <div className='profile_savedImages'>
+                        <div className='profile_followedUser'>
+                            <img src={userFound?.avatar} alt="" />
+                            <span className='profile_followingUser'>{userFound?.name}</span>
+                            <button>Following</button>
+                        </div>
+                        <div>
+                            <ul>
+                                {
+                                    userFoundImages.map(image => {
+                                        return <li key={image.id}>
+                                            <img src={image.link} alt="" />
+                                        </li>
+                                    })
+                                }
+                            </ul>
+                        </div>
 
+                    </div>
 
                 </div>
             </div>
