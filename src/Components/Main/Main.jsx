@@ -26,14 +26,13 @@ export default function Main() {
         }
     }, [])
 
-    console.log(images)
 
     return (
         <div className='app__main'>
             {images?.map(image => (
                 <>
                     <div className="app__main-img">
-                        <img src={image.link} alt="" />
+                        <img key={image.id} src={image.link} alt="" />
                         <div className="app__main-save">
                             <AddBox style={{ fontSize: 50 }} className='addBox' />
                         </div>

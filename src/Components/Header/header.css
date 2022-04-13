@@ -39,6 +39,12 @@
     cursor: pointer;
 }
 
+
+.notif-nr {
+    bottom: 1rem;
+    left: 1.4rem;
+}
+
 .nav-notif:hover,
 .nav-add:hover,
 .nav-search:hover {
@@ -51,3 +57,163 @@
     border-radius: 50%;
     cursor: pointer;
 }
+
+/* Profile Icon hover effect */
+
+.app__header-prof {
+    position: relative;
+}
+
+.prof-drop {
+    position: absolute;
+    color: white;
+    top: 40px;
+    right: 10px;
+    border: 1px solid #464646;
+    width: 10rem;
+    height: 14rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    background-color: black;
+    border-radius: .5rem;
+    color: #b4b4b4;
+    opacity: 1;
+    pointer-events: all;
+    transition: all 0.4s ease;
+}
+
+.prof-drop-off {
+    position: absolute;
+    color: white;
+    top: 40px;
+    right: 10px;
+    border: 1px solid #464646;
+    width: 10rem;
+    height: 14rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    background-color: black;
+    border-radius: .5rem;
+    color: #b4b4b4;
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(-10px);
+    transition: all 0.4s ease;
+}
+
+.viewProf {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    border-bottom: 1px solid #464646;
+    width: 70%;
+    height: 25%;
+    transition: .2s;
+    cursor: pointer;
+}
+
+.viewProf h3 {
+    font-weight: 600;
+    font-size: large;
+}
+
+.viewProf p {
+    font-weight: 400;
+    font-size: small;
+}
+
+.drop-settings {
+    border-bottom: 1px solid #464646;
+    width: 70%;
+    height: 20%;
+    transition: .2s;
+    cursor: pointer;
+}
+
+.drop-logOut {
+    width: 70%;
+    height: 15%;
+    transition: .2s;
+    cursor: pointer;
+}
+
+.viewProf:hover,
+.drop-settings:hover,
+.drop-logOut:hover {
+    color: blue;
+}
+
+.app__header-prof img:hover+.prof-drop {
+    opacity: 1;
+    pointer-events: all;
+    transform: translateY(0px);
+}
+
+/*  */
+
+/* Add icon drop menu */
+
+.app__header-add {
+    position: relative;
+}
+
+.add-drop {
+    position: absolute;
+    color: white;
+    top: 40px;
+    right: 10px;
+    border: 1px solid #464646;
+    width: 10rem;
+    height: 8rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    background-color: black;
+    border-radius: .5rem;
+    color: #b4b4b4;
+    opacity: 1;
+    pointer-events: all;
+    transition: all 0.4s ease;
+}
+
+
+.add-drop-off {
+    position: absolute;
+    color: white;
+    top: 40px;
+    right: 10px;
+    border: 1px solid #464646;
+    width: 10rem;
+    height: 8rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    background-color: black;
+    border-radius: .5rem;
+    color: #b4b4b4;
+    opacity: 0;
+    pointer-events: all;
+    transition: all 0.4s ease;
+}
+
+.add-drop p {
+    cursor: pointer;
+}
+
+.add-drop p:hover {
+    color: blue;
+}
+
+.app__header-add .nav-add:hover+.add-drop {
+    opacity: 1;
+    pointer-events: all;
+    transform: translateY(0px);
+}
+
+/*  */

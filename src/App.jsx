@@ -14,20 +14,23 @@ import Main from './Components/Main/Main'
 function App() {
   const user = useStore(store => store.user)
   const validate = useStore(store => store.validate)
+  const [profVisible, setProfVisible] = useState(false)
+  const [addVisible, setAddVisible] = useState(false)
+
 
   useEffect(() => {
     validate()
   }, [])
 
   return (
-    <div className="App">
+    <div onClick={() => { setProfVisible(false), setAddVisible(false) }} className="App">
       <Routes>
         <Route index element={<Navigate replace to={'/welcome'} />} />
         <Route path='/welcome' element={<WelcomePage />} />
         {/* <Route path='/profile/:username' element={<ProfilePage />} /> */}
         <Route path='/join' element={<Join />} />
         <Route path='/login' element={<LogIn />} />
-        <Route path='/home' element={<Home />} >
+        <Route path='/home' element={<Home setProfVisible={setProfVisible} profVisible={profVisible} setAddVisible={setAddVisible} addVisible={addVisible} />} >
           <Route path='/home/:username' element={<ProfilePage />} />
           <Route path='/home' element={<Main />} />
         </Route >
