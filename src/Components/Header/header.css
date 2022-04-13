@@ -34,7 +34,7 @@
 .nav-add,
 .nav-search {
     margin-right: 2rem;
-    color: white;
+    color: rgb(161, 161, 161);
     transition: .2s;
     cursor: pointer;
 }
