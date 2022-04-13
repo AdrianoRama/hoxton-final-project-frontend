@@ -15,7 +15,7 @@ export default function LogIn() {
     console.log(user)
 
     if (user) {
-        navigate('/main')
+        navigate('/home')
     }
 
     return (

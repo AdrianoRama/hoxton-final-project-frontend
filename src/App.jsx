@@ -16,7 +16,7 @@ function App() {
 
   useEffect(() => {
     validate()
-  })
+  }, [])
 
   return (
     <div className="App">

@@ -14,7 +14,7 @@ export default function Join() {
 
 
     if (user) {
-        navigate('/main')
+        navigate('/home')
     }
 
     return (
