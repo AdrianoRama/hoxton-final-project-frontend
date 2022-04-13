@@ -1,6 +1,6 @@
 .app__header {
     width: 100vw;
-    height: 11vh;
+    height: 11.3vh;
     background-color: #0f0f0f;
     display: flex;
 
@@ -8,10 +8,11 @@
 
 .app__logo-header {
     width: 50%;
+    display: flex;
+    align-items: center;
 }
 
 .app__logo-header svg {
-    margin: 1.5rem;
     margin-left: 5rem;
     color: white;
     transition: .2s;
