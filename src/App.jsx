@@ -8,6 +8,7 @@ import WelcomePage from './Components/WelcomePage/WelcomePage'
 import { useStore } from "../src/Store"
 import Header from './Components/Header/Header'
 import Home from './Components/Home/Home'
+import Main from './Components/Main/Main'
 
 
 function App() {
@@ -27,7 +28,8 @@ function App() {
         <Route path='/join' element={<Join />} />
         <Route path='/login' element={<LogIn />} />
         <Route path='/home' element={<Home />} >
-          <Route path='/home/:username' element={<ProfilePage  />} />
+          <Route path='/home/:username' element={<ProfilePage />} />
+          <Route path='/home' element={<Main />} />
         </Route >
       </Routes>
     </div>
