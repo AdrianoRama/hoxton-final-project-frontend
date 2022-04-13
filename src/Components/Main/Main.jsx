@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import './main.css'
 import { useStore } from "../../Store"
+import { AddBox } from '@material-ui/icons'
 
 
 export default function Main() {
@@ -30,9 +31,14 @@ export default function Main() {
     return (
         <div className='app__main'>
             {images?.map(image => (
-                <div className="app__main-img">
-                    <img src={image.link} alt="" />
-                </div>
+                <>
+                    <div className="app__main-img">
+                        <img src={image.link} alt="" />
+                        <div className="app__main-save">
+                            <AddBox style={{ fontSize: 50 }} className='addBox' />
+                        </div>
+                    </div>
+                </>
             ))}
         </div>
     )
