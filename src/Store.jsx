@@ -37,5 +37,23 @@ export const useStore = create((set, get) => ({
                     }
                 })
         }
+    },
+    signUp: (name, email, username, password) => {
+        fetch('http://localhost:4001/sign-up', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({name, email, username, password})
+    })
+        .then(resp => resp.json())
+        .then(data => {
+            if (data.error) {
+                alert(data.error)
+            } else {
+                localStorage.token = data.token
+                set({ user: data.user})
+            }
+        })
     }
 }))
