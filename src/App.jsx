@@ -13,7 +13,7 @@ function App() {
       <Routes>
         <Route index element={<Navigate replace to={'/welcome'} />} />
         <Route path='/welcome' element={<WelcomePage />} />
-        <Route path='/profile' element={<ProfilePage />} />
+        <Route path='/profile/:username' element={<ProfilePage />} />
         <Route path='/join' element={<Join />} />
         <Route path='/login' element={<LogIn />} />
       </Routes>

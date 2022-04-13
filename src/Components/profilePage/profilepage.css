@@ -52,9 +52,14 @@
 }
 
 .profile_savedImages img {
-    margin-top: 5rem;
+    /* margin-top: 2rem; */
     max-width: 200px;
 
+
+}
+
+.profile_savedImages {
+    padding: 5px 1rem;
 }
 
 .editButton {
