@@ -48,7 +48,7 @@ function ProfilePage() {
 
     return (
         <div className='profileWrapper'>
-            <div className="header">Header</div>
+            {/* <div className="header"></div> */}
             <div className='profile_info'>
                 <img className='profile_picture' src={userFound?.avatar} alt="" />
                 <h1 className='profile_name'>{userFound?.name}</h1>
