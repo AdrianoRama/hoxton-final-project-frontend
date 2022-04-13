@@ -1,4 +1,5 @@
 import { Button, Input } from '@mui/material'
+// @ts-ignore
 import React, { useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import './join.css'
@@ -10,13 +11,7 @@ export default function Join() {
 
     const signUp = useStore(store => store.signUp)
     const user = useStore(store => store.user)
-    const validate = useStore(store => store.validate)
 
-    useEffect(() => {
-        validate()
-    })
-
-    console.log(user)
 
     if (user) {
         navigate('/main')
@@ -30,9 +25,13 @@ export default function Join() {
                 <div className="app__join-form">
                     <form action="" onSubmit={e => {
                         e.preventDefault()
+                        // @ts-ignore
                         const name = e.target.name.value
+                        // @ts-ignore
                         const email = e.target.email.value
+                        // @ts-ignore
                         const username = e.target.username.value
+                        // @ts-ignore
                         const password = e.target.password.value
                         signUp(name, email, username, password)
                     }}>

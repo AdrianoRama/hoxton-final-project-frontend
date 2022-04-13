@@ -1,0 +1,52 @@
+.app__header {
+    width: 100vw;
+    height: 11vh;
+    background-color: #0f0f0f;
+    display: flex;
+
+}
+
+.app__logo-header {
+    width: 50%;
+}
+
+.app__logo-header svg {
+    margin: 1.5rem;
+    margin-left: 5rem;
+    color: white;
+    transition: .2s;
+    cursor: pointer;
+}
+
+.app__logo-header svg:hover {
+    color: #464646;
+}
+
+.app__header-nav {
+    width: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: end;
+}
+
+.nav-notif,
+.nav-add,
+.nav-search {
+    margin-right: 2rem;
+    color: white;
+    transition: .2s;
+    cursor: pointer;
+}
+
+.nav-notif:hover,
+.nav-add:hover,
+.nav-search:hover {
+    color: #464646;
+}
+
+.app__header-nav img {
+    margin-right: 2rem;
+    width: 35px;
+    border-radius: 50%;
+    cursor: pointer;
+}
