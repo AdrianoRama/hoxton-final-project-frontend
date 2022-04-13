@@ -44,7 +44,7 @@ function ProfilePage() {
     // if (user) {
     //     navigate('/login')
     // }
-    if(!user && !userFound) return <div>You must be logged in to view this page</div>
+    if (!user && !userFound) return <div>You must be logged in to view this page</div>
 
     return (
         <div className='profileWrapper'>
@@ -67,7 +67,7 @@ function ProfilePage() {
                     <ul>
                         {
                             userFoundImages.map(image => {
-                                return <li>
+                                return <li key={image.id}>
                                     <img src={image.link} alt="" />
                                 </li>
                             })
