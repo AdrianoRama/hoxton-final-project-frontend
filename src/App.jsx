@@ -23,10 +23,11 @@ function App() {
       <Routes>
         <Route index element={<Navigate replace to={'/welcome'} />} />
         <Route path='/welcome' element={<WelcomePage />} />
+        {/* <Route path='/profile/:username' element={<ProfilePage />} /> */}
         <Route path='/join' element={<Join />} />
         <Route path='/login' element={<LogIn />} />
         <Route path='/home' element={<Home />} >
-          <Route path={user?.username} element={<ProfilePage />} />
+          <Route path='/home/:username' element={<ProfilePage  />} />
         </Route >
       </Routes>
     </div>

@@ -35,4 +35,9 @@
 
 .profile_savedImages img {
     max-width: 300px;
+    padding: 0 1.5rem;
+}
+
+.profile_ul {
+    border-bottom: 1px solid #0f0f0f;
 }
