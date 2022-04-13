@@ -11,7 +11,7 @@ import Home from './Components/Home/Home'
 
 
 function App() {
-
+  const user = useStore(store => store.user)
   const validate = useStore(store => store.validate)
 
   useEffect(() => {
@@ -26,7 +26,7 @@ function App() {
         <Route path='/join' element={<Join />} />
         <Route path='/login' element={<LogIn />} />
         <Route path='/home' element={<Home />} >
-          <Route path='profile' element={<ProfilePage />} />
+          <Route path={user?.username} element={<ProfilePage />} />
         </Route >
       </Routes>
     </div>

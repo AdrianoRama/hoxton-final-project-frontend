@@ -18,7 +18,7 @@ export default function Header() {
                 <Search className='nav-search' />
                 <NotificationsNoneOutlined className='nav-notif' />
                 <AddBoxOutlined className='nav-add' />
-                <img src={user?.avatar} alt="" />
+                <img src={user?.avatar} alt="" onClick={() => { navigate(`/home/${user?.username}`) }} />
             </div>
         </div>
     )
