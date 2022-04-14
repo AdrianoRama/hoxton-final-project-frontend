@@ -3,7 +3,6 @@ import './FollowingItem.css';
 
 export default function FollowingItem({ follow }) {
 
-    console.log(follow)
     return (
         <div className='followingItem__container'>
             <div className='profile_followedUser' key={follow.id}>
@@ -12,9 +11,9 @@ export default function FollowingItem({ follow }) {
                 <button>Following</button>
             </div>
             <div className='followingItem__user-photos'>
-                { 
+                {
                     follow.images?.map(photo => {
-                        return  <img src={photo.link} alt="" key={photo.id} />
+                        return <img src={photo.link} alt="" key={photo.id} />
                     })
                 }
             </div>
