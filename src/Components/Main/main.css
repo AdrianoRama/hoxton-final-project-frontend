@@ -60,6 +60,7 @@ body {
 
 .addBox {
     color: black;
+    z-index: 10;
 }
 
 .addBox:hover {

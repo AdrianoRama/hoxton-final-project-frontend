@@ -3,10 +3,12 @@ import './main.css'
 import { useStore } from "../../Store"
 import { AddBox } from '@material-ui/icons'
 import Masonry from 'react-masonry-css'
+import { useNavigate } from 'react-router-dom'
 
 
 export default function Main() {
     const user = useStore(store => store.user)
+    const navigate = useNavigate()
 
     const [images, setImages] = useState([])
 
@@ -33,6 +35,12 @@ export default function Main() {
         700: 1
     }
 
+    function myClickHandler(e) {
+        if (!e) var e = window.event;
+        e.cancelBubble = true;
+        if (e.stopPropagation) e.stopPropagation();
+    }
+
     return (
         <div className='app__main'>
             <Masonry
@@ -41,10 +49,10 @@ export default function Main() {
                 columnClassName="my-masonry-grid_column">
                 {images?.map(image => (
                     <>
-                        <div className="app__main-img">
+                        <div className="app__main-img" onClick={() => { navigate(`/oneImage/${image.id}`) }} >
                             <img key={image.id} src={image.link} alt="" />
                             <div className="app__main-save">
-                                <AddBox style={{ fontSize: 50 }} className='addBox' />
+                                <AddBox style={{ fontSize: 50 }} className='addBox' onClick={(e) => { navigate(`/profile`), myClickHandler(e) }} />
                             </div>
                         </div>
                     </>
