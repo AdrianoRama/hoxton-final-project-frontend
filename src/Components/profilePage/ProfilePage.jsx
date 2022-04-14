@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import "./profilepage.css"
 import { useStore } from "../../Store"
+import UserFollowing from '../userFollowing/UserFollowing'
 
 
 function ProfilePage() {
@@ -65,11 +66,7 @@ function ProfilePage() {
                 </div>
                 <div className='profile_imagesContainer'>
                     <div className='profile_savedImages'>
-                        <div className='profile_followedUser'>
-                            <img src={userFound?.avatar} alt="" />
-                            <span className='profile_followingUser'>{userFound?.name}</span>
-                            <button>Following</button>
-                        </div>
+                        <UserFollowing userFound={userFound} />
                         <div>
                             <ul>
                                 {
