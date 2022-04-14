@@ -11,6 +11,7 @@ import Home from './Components/Home/Home'
 import Main from './Components/Main/Main'
 import OneImage from './Components/OneImagePage/OneImage'
 import UserFollowing from './Components/userFollowing/UserFollowing'
+import SavedImages from './Components/profilePage/SavedImages'
 
 function App() {
   const user = useStore(store => store.user)
@@ -18,7 +19,6 @@ function App() {
   const [profVisible, setProfVisible] = useState(false)
   const [addVisible, setAddVisible] = useState(false)
   const [saved, setSaved] = useState(null)
-
 
 
   useEffect(() => {
@@ -38,7 +38,7 @@ function App() {
           <Route path='/home/:username' element={<ProfilePage />} >
 
             <Route path='/home/:username/following' element={<UserFollowing />} />
-            <Route path='/home/:username' element={<Main setSaved={setSaved} saved={saved} />} />
+            <Route path='/home/:username' element={<SavedImages setSaved={setSaved} saved={saved} />} />
           </Route>
           <Route path='/home' element={<Main setSaved={setSaved} saved={saved} />} />
         </Route >

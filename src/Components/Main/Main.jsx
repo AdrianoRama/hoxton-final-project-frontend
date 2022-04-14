@@ -9,7 +9,6 @@ import { useNavigate } from 'react-router-dom'
 export default function Main({ setSaved, saved }) {
     const user = useStore(store => store.user)
     const navigate = useNavigate()
-
     const [images, setImages] = useState([])
 
     function saveImg(id) {

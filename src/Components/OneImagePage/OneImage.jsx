@@ -23,7 +23,7 @@ export default function OneImage() {
                 <div className="header-right">
                     <span className="header-save">SAVE</span>
                     <span className="header-close">ShOW INFO</span>
-                    <span onClick={() => { navigate(`/home`) }} className="header-close">X</span>
+                    <span onClick={() => { navigate(-1) }} className="header-close">X</span>
                 </div>
 
             </div>

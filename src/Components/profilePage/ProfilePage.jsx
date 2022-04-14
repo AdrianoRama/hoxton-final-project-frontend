@@ -22,9 +22,11 @@ function ProfilePage() {
 
     useEffect(() => {
         if (userFound) {
-            getUserImages(userFound.id)
+            getUserImages(userFound.username)
         }
     }, [params.username, userFound])
+
+    console.log(userFoundImages)
 
     const user = useStore(store => store.user)
 
