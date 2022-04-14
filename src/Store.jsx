@@ -3,6 +3,7 @@ import create from 'zustand'
 
 export const useStore = create((set, get) => ({
     user: null,
+    image: null,
     logIn: (email, password) => {
         fetch('http://localhost:4001/sign-in', {
         method: 'POST',
@@ -55,5 +56,16 @@ export const useStore = create((set, get) => ({
                 set({ user: data.user})
             }
         })
+    },
+    getImageById: (id) => {
+        fetch(`http://localhost:4001/oneImage/${id}`)
+            .then(resp => resp.json())
+            .then(data => {
+                if (data.error) {
+                    alert(data.error)
+                } else {
+                    set({ image: data })
+                }
+            })
     }
 }))
