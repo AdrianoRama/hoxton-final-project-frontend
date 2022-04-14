@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { Outlet, useNavigate, useParams } from 'react-router-dom'
 import "./profilepage.css"
 import { useStore } from "../../Store"
+import { Button } from '@mui/material'
 
 
 function ProfilePage() {
@@ -40,16 +41,19 @@ function ProfilePage() {
             <div className='profile_info'>
                 <img className='profile_picture' src={userFound?.avatar} alt="" />
                 <h1 className='profile_name'>{userFound?.name}</h1>
-                {(user?.username === userFound?.username) ? <button className='editButton'>Edit Profile</button> : <button className='editButton'>Follow</button>}
+                {(user?.username === userFound?.username) ? <Button variant="outlined" className='editButton'>Edit Profile</Button> : <Button variant="outlined" className='editButton'>Follow</Button>}
             </div>
             <div className='profile_main'>
-                <div className="profile_options">
+                <div className="profile-section">
                     <ul className='profile_ul'>
-                        <li className='profile_li' onClick={() => { navigate(`/home/${params.username}`) }}>{userFoundImages.length} Image</li>
-                        <li className='profile_li' onClick={() => { navigate(`/home/${params.username}/board`) }}>Board</li>
-                        <li className='profile_li' onClick={() => { navigate(`/home/${params.username}/following`) }}>{userFound?._count.following} Following</li>
-                        <li className='profile_li' onClick={() => { navigate(`/home/${params.username}/followedBy`) }}>{userFound?._count.followedBy} Followers</li>
+                        <p className='profile_li' onClick={() => { navigate(`/home/${params.username}`) }}>{userFoundImages.length} Image</p>
+                        <p className='profile_li' onClick={() => { navigate(`/home/${params.username}/board`) }}>Board</p>
+                        <p className='profile_li' onClick={() => { navigate(`/home/${params.username}/following`) }}>{userFound?._count.following} Following</p>
+                        <p className='profile_li' onClick={() => { navigate(`/home/${params.username}/followedBy`) }}>{userFound?._count.followedBy} Followers</p>
                     </ul>
+                </div>
+                <div className="profile_options">
+
                     <Outlet />
 
                 </div>
