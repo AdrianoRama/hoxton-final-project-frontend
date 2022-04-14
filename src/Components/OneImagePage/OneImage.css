@@ -14,7 +14,7 @@
 .header {
     width: 100%;
     padding-right: 3rem;
-    padding-top:1.5rem;
+    padding-top: 1.5rem;
     display: grid;
     grid-template-columns: 1fr 3fr;
     place-items: center;
@@ -31,8 +31,8 @@
 }
 
 .header-right {
-    place-self: center end ;
-    display:grid;
+    place-self: center end;
+    display: grid;
     grid-auto-flow: column;
     color: #a6a6a6
 }
@@ -41,11 +41,13 @@
     padding-right: 2rem;
     border-right: 1px solid #a6a6a6;
 }
+
 .header-close {
     padding-left: 2rem;
 }
 
-.header-save:hover, .header-close:hover {
+.header-save:hover,
+.header-close:hover {
     color: #2e36ff;
     cursor: pointer;
 }
@@ -54,7 +56,7 @@
     color: #2e36ff;
     border: 1px solid #2e36ff;
     cursor: pointer;
-} 
+}
 
 .oneImage-main {
     display: grid;
@@ -63,7 +65,8 @@
     padding-bottom: 3rem;
 }
 
-.oneImage-image{
+.oneImage-image {
     width: 392.487px;
     height: 585.6px;
+    object-fit: cover;
 }
