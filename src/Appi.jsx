@@ -8,40 +8,32 @@ import WelcomePage from './Components/WelcomePage/WelcomePage'
 import { useStore } from "../src/Store"
 import Header from './Components/Header/Header'
 import Home from './Components/Home/Home'
-import Main from './Components/Main/Main'
-import OneImage from './Components/OneImagePage/OneImage'
 import UserFollowing from './Components/userFollowing/UserFollowing'
+
 
 function App() {
   const user = useStore(store => store.user)
   const validate = useStore(store => store.validate)
-  const [profVisible, setProfVisible] = useState(false)
-  const [addVisible, setAddVisible] = useState(false)
-
 
   useEffect(() => {
     validate()
   }, [])
 
   return (
-    <div onClick={() => { setProfVisible(false), setAddVisible(false) }} className="App">
+    <div className="App">
       <Routes>
         <Route index element={<Navigate replace to={'/welcome'} />} />
         <Route path='/welcome' element={<WelcomePage />} />
         {/* <Route path='/profile/:username' element={<ProfilePage />} /> */}
         <Route path='/join' element={<Join />} />
         <Route path='/login' element={<LogIn />} />
-        <Route path='/oneImage/:id' element={<OneImage />} />
-        <Route path='/home' element={<Home setProfVisible={setProfVisible} profVisible={profVisible} setAddVisible={setAddVisible} addVisible={addVisible} />} >
+        <Route path='/home' element={<Home />} >
           <Route path='/home/:username' element={<ProfilePage />} >
-
-            <Route path='/home/:username/following' element={<UserFollowing />} />
-            <Route path='/home/:username' element={<Main />} />
+            <Route path='following' element={<UserFollowing />} />
           </Route>
-          <Route path='/home' element={<Main />} />
         </Route >
       </Routes>
-    </div>
+    </div >
   )
 }
 

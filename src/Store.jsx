@@ -4,6 +4,8 @@ import create from 'zustand'
 export const useStore = create((set, get) => ({
     user: null,
     image: null,
+    userFound: null,
+    userFoundImages: [],
     logIn: (email, password) => {
         fetch('http://localhost:4001/sign-in', {
         method: 'POST',
@@ -65,6 +67,28 @@ export const useStore = create((set, get) => ({
                     alert(data.error)
                 } else {
                     set({ image: data })
+                }
+            })
+    },
+    getUserByUsername: (username) => {
+        fetch(`http://localhost:4001/users/${username}`)
+            .then(resp => resp.json())
+            .then(data => {
+                if (data.error) {
+                    alert(data.error)
+                } else {
+                    set({ userFound: data })
+                }
+            })
+    },
+    getUserImages: (id) => {
+        fetch(`http://localhost:4001/images/${id}`)
+            .then(resp => resp.json())
+            .then(data => {
+                if (data.error) {
+                    alert(data.error)
+                } else {
+                    set({ userFoundImages: data })
                 }
             })
     }

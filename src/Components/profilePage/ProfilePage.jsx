@@ -1,42 +1,29 @@
 import React, { useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom'
+import { Outlet, useNavigate, useParams } from 'react-router-dom'
 import "./profilepage.css"
 import { useStore } from "../../Store"
 
 
 function ProfilePage() {
+
+    const navigate = useNavigate()
+
     const params = useParams()
 
-    const [userFound, setUserFound] = useState(null)
+    const userFound = useStore(store => store.userFound)
+    const getUserByUsername = useStore(store => store.getUserByUsername)
 
-
-    const [userFoundImages, setUserFoundImages] = useState([])
+    const userFoundImages = useStore(store => store.userFoundImages)
+    const getUserImages = useStore(store => store.getUserImages)
 
     useEffect(() => {
-        fetch(`http://localhost:4001/users/${params.username}`)
-            .then(resp => resp.json())
-            .then(data => {
-                if (data.error) {
-                    alert(data.error)
-                } else setUserFound(data)
-            })
-
+        getUserByUsername(params.username)
     }, [params.username])
 
     useEffect(() => {
         if (userFound) {
-            fetch(`http://localhost:4001/images/${userFound.id}`)
-                .then(resp => resp.json())
-                .then(data => {
-                    if (data.error) {
-                        alert(data.error)
-                    } else {
-                        setUserFoundImages(data)
-                    }
-                })
+            getUserImages(userFound.id)
         }
-
-
     }, [params.username, userFound])
 
     const user = useStore(store => store.user)
@@ -57,13 +44,13 @@ function ProfilePage() {
             <div className='profile_main'>
                 <div className="profile_options">
                     <ul className='profile_ul'>
-                        <li className='profile_li'>{userFoundImages.length} Image</li>
-                        <li className='profile_li'>Board</li>
-                        <li className='profile_li'>{userFound?._count.following} Following</li>
-                        <li className='profile_li'>{userFound?._count.followedBy} Followers</li>
+                        <li className='profile_li' onClick={() => { navigate(`/home/${params.username}`) }}>{userFoundImages.length} Image</li>
+                        <li className='profile_li' onClick={() => { navigate(`/home/${params.username}/board`) }}>Board</li>
+                        <li className='profile_li' onClick={() => { navigate(`/home/${params.username}/following`) }}>{userFound?._count.following} Following</li>
+                        <li className='profile_li' onClick={() => { navigate(`/home/${params.username}/followedBy`) }}>{userFound?._count.followedBy} Followers</li>
                     </ul>
                 </div>
-                <div className='profile_savedImages'>
+                {/* <div className='profile_savedImages'>
                     <ul>
                         {
                             userFoundImages.map(image => {
@@ -73,9 +60,8 @@ function ProfilePage() {
                             })
                         }
                     </ul>
-
-
-                </div>
+                </div> */}
+                <Outlet />
             </div>
         </div>
     )
