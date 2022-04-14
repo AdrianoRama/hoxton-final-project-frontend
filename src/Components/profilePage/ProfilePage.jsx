@@ -66,7 +66,7 @@ function ProfilePage() {
                 <div className='profile_savedImages'>
                     <ul>
                         {
-                            userFoundImages.map(image => {
+                            userFoundImages?.map(image => {
                                 return <li key={image.id}>
                                     <img src={image.link} alt="" />
                                 </li>

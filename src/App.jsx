@@ -8,6 +8,7 @@ import WelcomePage from './Components/WelcomePage/WelcomePage'
 import { useStore } from "../src/Store"
 import Header from './Components/Header/Header'
 import Home from './Components/Home/Home'
+import OneImage from './Components/OneImagePage/OneImage'
 
 
 function App() {
@@ -26,6 +27,7 @@ function App() {
         {/* <Route path='/profile/:username' element={<ProfilePage />} /> */}
         <Route path='/join' element={<Join />} />
         <Route path='/login' element={<LogIn />} />
+        <Route path='/oneImage/:id' element={<OneImage />} />
         <Route path='/home' element={<Home />} >
           <Route path='/home/:username' element={<ProfilePage  />} />
         </Route >
