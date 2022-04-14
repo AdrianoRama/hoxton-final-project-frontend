@@ -17,6 +17,8 @@ function App() {
   const validate = useStore(store => store.validate)
   const [profVisible, setProfVisible] = useState(false)
   const [addVisible, setAddVisible] = useState(false)
+  const [saved, setSaved] = useState(null)
+
 
 
   useEffect(() => {
@@ -36,9 +38,9 @@ function App() {
           <Route path='/home/:username' element={<ProfilePage />} >
 
             <Route path='/home/:username/following' element={<UserFollowing />} />
-            <Route path='/home/:username' element={<Main />} />
+            <Route path='/home/:username' element={<Main setSaved={setSaved} saved={saved} />} />
           </Route>
-          <Route path='/home' element={<Main />} />
+          <Route path='/home' element={<Main setSaved={setSaved} saved={saved} />} />
         </Route >
       </Routes>
     </div>

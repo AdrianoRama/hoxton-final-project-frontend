@@ -6,11 +6,29 @@ import Masonry from 'react-masonry-css'
 import { useNavigate } from 'react-router-dom'
 
 
-export default function Main() {
+export default function Main({ setSaved, saved }) {
     const user = useStore(store => store.user)
     const navigate = useNavigate()
 
     const [images, setImages] = useState([])
+
+    function saveImg(id) {
+        fetch(`http://localhost:4001/save`, {
+            method: 'POST',
+            headers: {
+                Authorization: localStorage.token,
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                imageId: id
+            })
+        }).then(resp => resp.json())
+            .then(saveFromServer =>
+                setSaved(saveFromServer)
+            )
+    }
+
+    console.log(saved)
 
     useEffect(() => {
         if (user) {
@@ -31,7 +49,8 @@ export default function Main() {
 
     const breakpoints = {
         default: 5,
-        1100: 2,
+        1100: 3,
+        850: 2,
         700: 1
     }
 
@@ -53,7 +72,7 @@ export default function Main() {
                         <div className="app__main-img" onClick={() => { navigate(`/oneImage/${image.id}`) }} >
                             <img key={image.id} src={image.link} alt="" />
                             <div className="app__main-save">
-                                <AddBox style={{ fontSize: 50 }} className='addBox' onClick={(e) => { navigate(`/profile`), myClickHandler(e) }} />
+                                <AddBox style={{ fontSize: 50 }} className='addBox' onClick={(e) => { myClickHandler(e), saveImg(image.id) }} />
                             </div>
                         </div>
                     </>
