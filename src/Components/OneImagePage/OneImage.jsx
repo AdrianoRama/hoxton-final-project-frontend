@@ -1,9 +1,10 @@
 import './OneImage.css';
 import { useStore } from "../../Store"
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { useEffect } from 'react';
 
 export default function OneImage() {
+    const navigate = useNavigate()
 
     const params = useParams()
     const getImageById = useStore(store => store.getImageById)
@@ -22,7 +23,7 @@ export default function OneImage() {
                 <div className="header-right">
                     <span className="header-save">SAVE</span>
                     <span className="header-close">ShOW INFO</span>
-                    <span className="header-close">X</span>
+                    <span onClick={() => { navigate(`/home`) }} className="header-close">X</span>
                 </div>
 
             </div>
