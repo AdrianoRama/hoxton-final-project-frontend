@@ -2,12 +2,12 @@ import React, { useEffect, useState } from 'react'
 
 
 
-function UserFollowing({ userFound }) {
+function UserFollowing() {
 
     const [following, setFollowing] = useState([])
 
     useEffect(() => {
-        fetch(`http://localhost:4001/getFollowing/${userFound.id}`)
+        fetch(`http://localhost:4001/getFollowing/${1}`)
             .then(resp => resp.json())
             .then(data => {
                 if (data.error) {
@@ -16,7 +16,7 @@ function UserFollowing({ userFound }) {
                     setFollowing(data)
                 }
             })
-    }, [userFound])
+    }, [])
 
 
     return (

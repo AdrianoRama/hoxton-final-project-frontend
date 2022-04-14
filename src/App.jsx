@@ -29,8 +29,8 @@ function App() {
         <Route path='/login' element={<LogIn />} />
         <Route path='/home' element={<Home />} >
           <Route path='/home/:username' element={<ProfilePage />} >
-            <Route path='/home/following' element={<UserFollowing />} />
-          </  Route>
+            <Route path='following' element={<UserFollowing />} />
+          </Route>
         </Route >
       </Routes>
     </div >
