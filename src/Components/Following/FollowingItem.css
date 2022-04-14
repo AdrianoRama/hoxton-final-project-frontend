@@ -1,0 +1,24 @@
+.followingItem__container {
+    display: grid;
+    grid-template-columns: 300px 1fr;
+}
+
+.followingItem__user-photos {
+    display: grid;
+    grid-template-columns: repeat(5, minmax(200px, 1fr));
+    gap: 1rem;
+    list-style: none;
+    margin-bottom: 1rem;
+    overflow-x: hidden;
+}
+
+.followingItem__user-photos img {
+    width: auto;
+    height: 180px;
+}
+
+.all-following {
+    display: grid;
+    padding-top: 2rem;
+    gap: 2rem;
+}

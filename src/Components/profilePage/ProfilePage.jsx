@@ -35,7 +35,6 @@ function ProfilePage() {
 
     return (
         <div className='profileWrapper'>
-            {/* <div className="header"></div> */}
             <div className='profile_info'>
                 <img className='profile_picture' src={userFound?.avatar} alt="" />
                 <h1 className='profile_name'>{userFound?.name}</h1>
@@ -49,19 +48,9 @@ function ProfilePage() {
                         <li className='profile_li' onClick={() => { navigate(`/home/${params.username}/following`) }}>{userFound?._count.following} Following</li>
                         <li className='profile_li' onClick={() => { navigate(`/home/${params.username}/followedBy`) }}>{userFound?._count.followedBy} Followers</li>
                     </ul>
+                    <Outlet />
+
                 </div>
-                {/* <div className='profile_savedImages'>
-                    <ul>
-                        {
-                            userFoundImages.map(image => {
-                                return <li key={image.id}>
-                                    <img src={image.link} alt="" />
-                                </li>
-                            })
-                        }
-                    </ul>
-                </div> */}
-                <Outlet />
             </div>
         </div>
     )

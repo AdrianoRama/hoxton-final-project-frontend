@@ -1,13 +1,16 @@
 import React, { useEffect, useState } from 'react'
-
+import { useStore } from "../../Store"
+import FollowingItem from '../Following/FollowingItem'
 
 
 function UserFollowing() {
 
     const [following, setFollowing] = useState([])
 
+    const userFound = useStore(store => store.userFound)
+
     useEffect(() => {
-        fetch(`http://localhost:4001/getFollowing/1`)
+        fetch(`http://localhost:4001/getFollowing/${userFound?.id}`)
             .then(resp => resp.json())
             .then(data => {
                 if (data.error) {
@@ -16,21 +19,19 @@ function UserFollowing() {
                     setFollowing(data)
                 }
             })
-    }, [])
+    }, [userFound?.id])
 
 
     return (
-        <ul>
+        <div className="all-following">
             {
                 following.map(follow => {
-                    return <div className='profile_followedUser'>
-                        <img src={follow.avatar} alt="" />
-                        <span className='profile_followingUser'>{follow.name}</span>
-                        <button>Following</button>
-                    </div>
+                    return (
+                        <FollowingItem key={follow.id} follow={follow} />
+                    )
                 })
             }
-        </ul>
+        </div>
     )
 }
 
