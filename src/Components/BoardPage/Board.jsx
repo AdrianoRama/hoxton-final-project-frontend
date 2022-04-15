@@ -3,13 +3,15 @@ import './Board.css';
 import BoardBox from './BoardBox';
 
 import { useStore } from "../../Store"
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+import CreateBoard from '../CreateBoard/CreateBoard';
 
 
 export default function Board() {
 
     const params = useParams()
+    const [board, setBoard] = useState(true)
 
     const userFound = useStore(store => store.userFound)
     const userFoundCollections = useStore(store => store.userFoundCollections)
@@ -19,10 +21,14 @@ export default function Board() {
         getUserByUsername(params.username)
     }, [params.username])
 
+    
 
-    return (
+    return (<>
+
+        { board ? <CreateBoard /> : null }
+
         <div className="board__container">
-            <div className="board_box">
+            <div className="board_box" onClick={() => { setBoard(true) }}>
                 <div className="board_addBoard">
                     <Add className='plus' style={{ fontSize: '120px' }}/>
                 </div>
@@ -35,5 +41,6 @@ export default function Board() {
                 return <BoardBox collection={collection} key={collection.id} />
             })}
         </div>
+        </>
     )
 }
