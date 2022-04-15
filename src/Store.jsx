@@ -110,5 +110,19 @@ export const useStore = create((set, get) => ({
                     set({ userFoundCollections: data })
                 }
             })
+    },
+    createCollection: (name) => {
+        return fetch('http://localhost:4001/collections', {
+            method: 'POST',
+            headers: {
+                Authorization: localStorage.token,
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ name })
+        }).then(res => res.json())
+    },
+    setUserFoundCollectionFunc: (data) => {
+        set({ userFoundCollections: data })
     }
 }))
+

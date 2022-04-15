@@ -11,7 +11,7 @@ import CreateBoard from '../CreateBoard/CreateBoard';
 export default function Board() {
 
     const params = useParams()
-    const [board, setBoard] = useState(true)
+    const [board, setBoard] = useState(false)
 
     const userFound = useStore(store => store.userFound)
     const userFoundCollections = useStore(store => store.userFoundCollections)
