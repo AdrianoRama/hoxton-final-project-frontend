@@ -12,6 +12,7 @@ import Main from './Components/Main/Main'
 import OneImage from './Components/OneImagePage/OneImage'
 import UserFollowing from './Components/userFollowing/UserFollowing'
 import SavedImages from './Components/profilePage/SavedImages'
+import Board from './Components/BoardPage/Board'
 
 function App() {
   const user = useStore(store => store.user)
@@ -36,7 +37,7 @@ function App() {
         <Route path='/oneImage/:id' element={<OneImage />} />
         <Route path='/home' element={<Home setProfVisible={setProfVisible} profVisible={profVisible} setAddVisible={setAddVisible} addVisible={addVisible} />} >
           <Route path='/home/:username' element={<ProfilePage />} >
-
+            <Route path='/home/:username/board' element={<Board />} />
             <Route path='/home/:username/following' element={<UserFollowing />} />
             <Route path='/home/:username' element={<SavedImages setSaved={setSaved} saved={saved} />} />
           </Route>
