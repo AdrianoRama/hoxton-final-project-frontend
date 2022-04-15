@@ -17,6 +17,8 @@ function ProfilePage() {
     const userFoundImages = useStore(store => store.userFoundImages)
     const getUserImages = useStore(store => store.getUserImages)
 
+    const userFoundCollections = useStore(store => store.userFoundCollections)
+
     useEffect(() => {
         getUserByUsername(params.username)
     }, [params.username])
@@ -47,7 +49,7 @@ function ProfilePage() {
                 <div className="profile-section">
                     <ul className='profile_ul'>
                         <p className='profile_li' onClick={() => { navigate(`/home/${params.username}`) }}>{userFoundImages.length} Image</p>
-                        <p className='profile_li' onClick={() => { navigate(`/home/${params.username}/board`) }}>Board</p>
+                        <p className='profile_li' onClick={() => { navigate(`/home/${params.username}/board`) }}> {userFoundCollections.length} Board</p>
                         <p className='profile_li' onClick={() => { navigate(`/home/${params.username}/following`) }}>{userFound?._count.following} Following</p>
                         <p className='profile_li' onClick={() => { navigate(`/home/${params.username}/followedBy`) }}>{userFound?._count.followedBy} Followers</p>
                     </ul>

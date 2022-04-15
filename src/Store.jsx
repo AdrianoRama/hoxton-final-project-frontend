@@ -6,6 +6,7 @@ export const useStore = create((set, get) => ({
     image: null,
     userFound: null,
     userFoundImages: [],
+    userFoundCollections: [],
     logIn: (email, password) => {
         fetch('http://localhost:4001/sign-in', {
             method: 'POST',
@@ -78,6 +79,15 @@ export const useStore = create((set, get) => ({
                     alert(data.error)
                 } else {
                     set({ userFound: data })
+                    fetch(`http://localhost:4001/collections/${data.id}`)
+                        .then(resp => resp.json())
+                        .then(data => {
+                            if (data.error) {
+                                alert(data.error)
+                            } else {
+                                set({ userFoundCollections: data })
+                            }
+                        })
                 }
             })
     },
@@ -90,7 +100,15 @@ export const useStore = create((set, get) => ({
             )
 
     },
-
-
-
+    getCollectionsById: (id) => {
+        fetch(`http://localhost:4001/collections/${id}`)
+            .then(resp => resp.json())
+            .then(data => {
+                if (data.error) {
+                    alert(data.error)
+                } else {
+                    set({ userFoundCollections: data })
+                }
+            })
+    }
 }))
