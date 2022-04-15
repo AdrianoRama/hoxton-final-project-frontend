@@ -23,15 +23,18 @@
 
     display: grid;
     place-items: center;
+    cursor: pointer;
+
 }
 
 .board_addBoard:hover,
-.board:hover .board img {
-    background-color: #1a1a1a;
+.board:hover .board img,
+.board:hover {
+    opacity: 0.8;
 }
 
 .board_addBoard:hover + .board_title,
-.board:hover + .board_title  {
+.board:hover + .board_title   {
     color: #707070;
 }
 
@@ -39,12 +42,18 @@
     background-color: #2e2e2e;
     width: 100%;
     height: 100%;
+    cursor: pointer;
 }
 
 .board img {
     width: 100%;
     height: 100%;
     border: none;
+    object-fit: cover;
+}
+
+.board img:hover {
+    opacity: 0.5;
 }
 
 @media screen and (max-width: 1025px) {
