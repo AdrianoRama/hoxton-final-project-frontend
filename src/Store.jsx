@@ -122,6 +122,28 @@ export const useStore = create((set, get) => ({
             body: JSON.stringify({ name })
         }).then(res => res.json())
     },
+
+    followUser: (username) => {
+        return fetch(`http://localhost:4001/follow`, {
+            method: 'PATCH',
+            headers: {
+                'Content-Type': 'application/json',
+                Authorization: localStorage.token
+            },
+            body: JSON.stringify({ username })
+        }).then(res => res.json())
+    },
+    unfollowUser: (username) => {
+        return fetch(`http://localhost:4001/unfollow`, {
+            method: 'PATCH',
+            headers: {
+                'Content-Type': 'application/json',
+                Authorization: localStorage.token
+            },
+            body: JSON.stringify({ username })
+        }).then(res => res.json())
+    },
+
     setUserFoundCollectionFunc: (data) => {
         set({ userFoundCollections: data })
     },
