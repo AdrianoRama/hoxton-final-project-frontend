@@ -18,7 +18,10 @@ function ProfilePage() {
     const getUserImages = useStore(store => store.getUserImages)
 
     const userFoundCollections = useStore(store => store.userFoundCollections)
-
+    const userFollows = useStore(store => store.userFollows)
+    const [userFollowers, setFollowers] = useState([])
+    const user = useStore(store => store.user)
+    const setUserFollowsFunction = useStore(store => store.setUserFollowsFunction)
     useEffect(() => {
         getUserByUsername(params.username)
     }, [params.username])
@@ -29,9 +32,29 @@ function ProfilePage() {
         }
     }, [params.username, userFound])
 
-    console.log(userFoundImages)
+    useEffect(() => {
+        if (userFound) {
+            fetch(`http://localhost:4001/getFollowers/${userFound?.id}`).then(res => res.json())
+                .then(data => {
+                    if (data.error) {
+                        alert(data.error)
+                    } else {
+                        setFollowers(data)
+                        const matches = data.find(u => u.id === user?.id)
+                        if (matches) {
+                            setUserFollowsFunction(true)
+                        } else {
+                            setUserFollowsFunction(false)
+                        }
+                    }
+                })
+        }
 
-    const user = useStore(store => store.user)
+    }, [userFound, user])
+
+    console.log(userFoundImages)
+    console.log('userFollows:', userFollows)
+
 
     // if (user) {
     //     navigate('/login')
@@ -43,7 +66,10 @@ function ProfilePage() {
             <div className='profile_info'>
                 <img className='profile_picture' src={userFound?.avatar} alt="" />
                 <h1 className='profile_name'>{userFound?.name}</h1>
-                {(user?.username === userFound?.username) ? <Button variant="outlined" className='editButton'>Edit Profile</Button> : <Button variant="outlined" className='editButton'>Follow</Button>}
+                {(user?.username === userFound?.username) ? <Button variant="outlined" className='editButton'>Edit Profile</Button> :
+                    (userFollows ? <Button variant="outlined" className='editButton'>Unfollow</Button> : <Button variant="outlined" className='editButton'>Follow</Button>)
+                }
+
             </div>
             <div className='profile_main'>
                 <div className="profile-section">
