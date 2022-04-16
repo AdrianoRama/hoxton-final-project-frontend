@@ -55,7 +55,7 @@ function ProfilePage() {
                 })
         }
 
-    }, [params.username, user])
+    }, [userFound, user])
 
     useEffect(() => {
         if (userFound) {
