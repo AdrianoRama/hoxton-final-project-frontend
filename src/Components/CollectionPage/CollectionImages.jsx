@@ -1,31 +1,16 @@
 import React, { useEffect, useState } from 'react'
-import './main.css'
+import '../Main/main.css'
 import { useStore } from "../../Store"
 import { AddBox } from '@material-ui/icons'
 import Masonry from 'react-masonry-css'
 import { useNavigate } from 'react-router-dom'
 
 
-export default function Main({ setSaved, saved }) {
+export default function CollectionImages() {
     const user = useStore(store => store.user)
     const navigate = useNavigate()
     const [images, setImages] = useState([])
 
-    function saveImg(id) {
-        fetch(`http://localhost:4001/save`, {
-            method: 'POST',
-            headers: {
-                Authorization: localStorage.token,
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-                imageId: id
-            })
-        }).then(resp => resp.json())
-            .then(saveFromServer =>
-                setSaved(saveFromServer)
-            )
-    }
 
 
     useEffect(() => {
@@ -69,9 +54,6 @@ export default function Main({ setSaved, saved }) {
                     <>
                         <div className="app__main-img" onClick={() => { navigate(`/oneImage/${image.id}`) }} >
                             <img key={image.id} src={image.link} alt="" />
-                            <div className="app__main-save">
-                                <AddBox style={{ fontSize: 50 }} className='addBox' onClick={(e) => { myClickHandler(e), saveImg(image.id) }} />
-                            </div>
                         </div>
                     </>
                 ))}

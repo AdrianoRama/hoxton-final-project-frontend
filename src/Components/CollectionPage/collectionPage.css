@@ -1,0 +1,22 @@
+.app__collection {
+    max-width: 100vw;
+    min-height: 100vh;
+}
+
+.app__collection-info {
+    width: 100%;
+    height: 25vh;
+    display: grid;
+    justify-content: center;
+    align-items: center;
+}
+
+.app__collection-info h1 {
+    margin-bottom: -3rem;
+    color: white;
+}
+
+.app__collection-info img {
+    width: 55px;
+    border-radius: 50%;
+}

@@ -14,6 +14,7 @@ import UserFollowing from './Components/userFollowing/UserFollowing'
 import SavedImages from './Components/profilePage/SavedImages'
 import Board from './Components/BoardPage/Board'
 import UserFollowers from './Components/userFollowers/UserFollowers'
+import CollectionPage from './Components/CollectionPage/CollectionPage'
 
 function App() {
   const user = useStore(store => store.user)
@@ -37,8 +38,10 @@ function App() {
         <Route path='/login' element={<LogIn />} />
         <Route path='/oneImage/:id' element={<OneImage />} />
         <Route path='/home' element={<Home setProfVisible={setProfVisible} profVisible={profVisible} setAddVisible={setAddVisible} addVisible={addVisible} />} >
+          <Route path='/home/:username/board/:collection' element={<CollectionPage />} />
           <Route path='/home/:username' element={<ProfilePage />} >
-            <Route path='/home/:username/board' element={<Board />} />
+            <Route path='/home/:username/board' element={<Board />} >
+            </Route>
             <Route path='/home/:username/following' element={<UserFollowing />} />
             <Route path='/home/:username/followedBy' element={<UserFollowers />} />
             <Route path='/home/:username' element={<SavedImages setSaved={setSaved} saved={saved} />} />

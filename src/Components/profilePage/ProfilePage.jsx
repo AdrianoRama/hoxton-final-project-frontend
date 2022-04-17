@@ -78,7 +78,14 @@ function ProfilePage() {
             <div className='profile_info'>
                 <img className='profile_picture' src={userFound?.avatar} alt="" />
                 <h1 className='profile_name'>{userFound?.name}</h1>
-                {(user?.username === userFound?.username) ? <Button variant="outlined" className='editButton'>Edit Profile</Button> :
+                {(user?.username === userFound?.username) ? <Button variant="outlined" className='editButton' style={{
+                    backgroundColor: '#212121',
+                    color: 'white',
+                    border: 'none',
+                    borderRadius: '5rem',
+                    fontWeight: '400',
+                    width: '9rem'
+                }}>Edit Profile</Button> :
                     (userFollows ? <Button onClick={() => {
                         unfollowUser(userFound?.username).then(data => {
                             let userFollowersCopy = JSON.parse(JSON.stringify(userFollowers))
@@ -86,7 +93,14 @@ function ProfilePage() {
                             setFollowers(userFollowersCopy)
                             setUserFollowsFunction(false)
                         })
-                    }} variant="outlined" className='editButton'>Unfollow</Button>
+                    }} variant="outlined" className='editButton' style={{
+                        backgroundColor: '#212121',
+                        color: 'white',
+                        border: 'none',
+                        borderRadius: '5rem',
+                        fontWeight: '400',
+                        width: '7rem'
+                    }}>Unfollow</Button>
                         : <Button onClick={() => {
                             followUser(userFound?.username).then(data => {
                                 let userFollowersCopy = JSON.parse(JSON.stringify(userFollowers))
@@ -94,7 +108,14 @@ function ProfilePage() {
                                 setFollowers(userFollowersCopy)
                                 setUserFollowsFunction(true)
                             })
-                        }} variant="outlined" className='editButton'>Follow</Button>)
+                        }} variant="outlined" className='editButton' style={{
+                            backgroundColor: '#212121',
+                            color: 'white',
+                            border: 'none',
+                            borderRadius: '5rem',
+                            fontWeight: '400',
+                            width: '7rem'
+                        }}>Follow</Button>)
                 }
 
             </div>
