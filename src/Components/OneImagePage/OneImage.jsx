@@ -4,6 +4,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { useEffect } from 'react';
 import HeaderPeople from './HeaderPeople';
 import { displayOnlyFiveUsers } from '../../helpers';
+import UserList from './UserList';
 
 export default function OneImage() {
     const navigate = useNavigate()
@@ -12,6 +13,8 @@ export default function OneImage() {
     const getImageById = useStore(store => store.getImageById)
     const getUsersWhoSavedImage = useStore(store => store.getUsersWhoSavedImage)
     const usersWhoSavedImage = useStore(store => store.usersWhoSavedImage)
+    const showUserList = useStore(store => store.showUserList)
+    const setShowUserList = useStore(store => store.setShowUserList)
 
     useEffect(() => {
         getImageById(params.id)
@@ -27,9 +30,11 @@ export default function OneImage() {
     return (
         <div className="oneImage">
             <div className="header">
-                <div className='people-components'>
+                <div className='people-components' onMouseOver={() => {
+                    setShowUserList(true)
+                }}>
                     {displayOnlyFiveUsers(usersWhoSavedImage).usersToReturn.map(u => <HeaderPeople key={u.id} user={u} />)}
-                    {displayOnlyFiveUsers(usersWhoSavedImage).peopleLeft < 5 ? <span className='people-num-left'>{displayOnlyFiveUsers(usersWhoSavedImage).peopleLeft} +</span> : null}
+                    {displayOnlyFiveUsers(usersWhoSavedImage).peopleLeft !== 0 ? <span className='people-num-left'>{displayOnlyFiveUsers(usersWhoSavedImage).peopleLeft} +</span> : null}
                 </div>
 
                 <div className="header-right">
@@ -42,6 +47,7 @@ export default function OneImage() {
             <div className="oneImage-main">
                 <img className="oneImage-image" src={image?.link} alt="image" />
             </div>
+            {showUserList ? <UserList /> : null}
         </div>
     )
 

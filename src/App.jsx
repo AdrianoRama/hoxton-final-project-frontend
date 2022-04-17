@@ -22,6 +22,7 @@ function App() {
   const [profVisible, setProfVisible] = useState(false)
   const [addVisible, setAddVisible] = useState(false)
   const [saved, setSaved] = useState(null)
+  const setShowUserList = useStore(store => store.setShowUserList)
 
 
   useEffect(() => {
@@ -29,7 +30,7 @@ function App() {
   }, [])
 
   return (
-    <div onClick={() => { setProfVisible(false), setAddVisible(false) }} className="App">
+    <div onClick={() => { setProfVisible(false), setAddVisible(false), setShowUserList(false) }} className="App">
       <Routes>
         <Route index element={<Navigate replace to={'/welcome'} />} />
         <Route path='/welcome' element={<WelcomePage />} />
