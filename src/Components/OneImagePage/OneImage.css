@@ -21,8 +21,6 @@
     background-color: #060606;
     font-size: 13px;
     font-weight: 700;
-    border: solid 1px white;
-
 }
 
 .header-people {
@@ -42,7 +40,6 @@
     display: grid;
     grid-template-columns: repeat(auto-fit, 20px);
     place-content: center;
-    border: solid 1px red;
     width: 100%;
     gap: 4px;
     padding: 5px;
