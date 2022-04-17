@@ -2,6 +2,7 @@ import './OneImage.css';
 import { useStore } from "../../Store"
 import { useNavigate, useParams } from 'react-router-dom';
 import { useEffect } from 'react';
+import HeaderPeople from './HeaderPeople';
 
 export default function OneImage() {
     const navigate = useNavigate()
@@ -19,7 +20,15 @@ export default function OneImage() {
     return (
         <div className="oneImage">
             <div className="header">
-                <span className="header-people">21+</span>
+                <div className='people-components'>
+                    <HeaderPeople />
+                    <HeaderPeople />
+                    <HeaderPeople />
+                    <HeaderPeople />
+                    <HeaderPeople />
+                    <span className='people-num-left'>21+</span>
+                </div>
+
                 <div className="header-right">
                     <span className="header-save">SAVE</span>
                     <span className="header-close">ShOW INFO</span>

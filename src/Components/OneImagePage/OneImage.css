@@ -14,20 +14,51 @@
 .header {
     width: 100%;
     padding-right: 3rem;
-    padding-top: 1.5rem;
+    padding-top: 0.5rem;
     display: grid;
     grid-template-columns: 1fr 3fr;
     place-items: center;
     background-color: #060606;
     font-size: 13px;
     font-weight: 700;
+    border: solid 1px white;
+
 }
 
 .header-people {
-    border: 1px solid #a6a6a6;
+    /* border: 1px solid #a6a6a6; */
+    /* border-radius: 50%; */
+}
+
+.header-people img {
+    width: 30px;
+    height: 30px;
+    border: 1px solid #363434;
+    background-color: white;
     border-radius: 50%;
-    padding: .5rem;
-    color: #a6a6a6;
+}
+
+.people-components {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, 20px);
+    place-content: center;
+    border: solid 1px red;
+    width: 100%;
+    gap: 4px;
+    padding: 5px;
+}
+
+.people-num-left {
+    border: solid 1px #363434;
+    color: white;
+    border-radius: 50%;
+    height: 30px;
+    width: 30px;
+    display: grid;
+    place-content: center;
+    font-size: 10px;
+    z-index: 10;
+    background-color: #212121;
 }
 
 .header-right {
@@ -53,9 +84,8 @@
 }
 
 .header-people:hover {
-    color: #2e36ff;
-    border: 1px solid #2e36ff;
     cursor: pointer;
+    transform: scale(1.1);
 }
 
 .oneImage-main {
