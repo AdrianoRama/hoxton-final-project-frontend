@@ -122,8 +122,8 @@ function ProfilePage() {
             <div className='profile_main'>
                 <div className="profile-section">
                     <ul className='profile_ul'>
-                        <p className='profile_li' onClick={() => { navigate(`/home/${params.username}`) }}>{userFoundImages.length} Image</p>
-                        <p className='profile_li' onClick={() => { navigate(`/home/${params.username}/board`) }}> {userFoundCollections.length} Board</p>
+                        <p className='profile_li' onClick={() => { navigate(`/home/${params.username}`) }}>{userFoundImages.length} Images</p>
+                        <p className='profile_li' onClick={() => { navigate(`/home/${params.username}/board`) }}> {userFoundCollections.length} Boards</p>
                         <p className='profile_li' onClick={() => { navigate(`/home/${params.username}/following`) }}>{userFollowing.length} Following</p>
                         <p className='profile_li' onClick={() => { navigate(`/home/${params.username}/followedBy`) }}>{userFollowers.length} Followers</p>
                     </ul>
