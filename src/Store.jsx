@@ -10,6 +10,7 @@ export const useStore = create((set, get) => ({
     userFollows: false,
     clickedCollection: null,
     collectionImages: [],
+    usersWhoSavedImage: [],
     logIn: (email, password) => {
         fetch('http://localhost:4001/sign-in', {
             method: 'POST',
@@ -160,6 +161,17 @@ export const useStore = create((set, get) => ({
         fetch(`http://localhost:4001/collectionImages/${id}`).then(res => res.json())
             .then(data => {
                 set({ collectionImages: data.saved })
+            })
+    },
+    getUsersWhoSavedImage: (imageId) => {
+        fetch(`http://localhost:4001/savedImages/${imageId}`).then(res => res.json())
+            .then(data => {
+                if (data.error) {
+                    alert(data.error)
+                } else {
+                    set({ usersWhoSavedImage: data })
+                }
+
             })
     }
 }))

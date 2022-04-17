@@ -3,15 +3,22 @@ import { useStore } from "../../Store"
 import { useNavigate, useParams } from 'react-router-dom';
 import { useEffect } from 'react';
 import HeaderPeople from './HeaderPeople';
+import { displayOnlyFiveUsers } from '../../helpers';
 
 export default function OneImage() {
     const navigate = useNavigate()
 
     const params = useParams()
     const getImageById = useStore(store => store.getImageById)
+    const getUsersWhoSavedImage = useStore(store => store.getUsersWhoSavedImage)
+    const usersWhoSavedImage = useStore(store => store.usersWhoSavedImage)
 
     useEffect(() => {
         getImageById(params.id)
+    }, [])
+
+    useEffect(() => {
+        getUsersWhoSavedImage(Number(params.id))
     }, [])
 
     const image = useStore(store => store.image)
@@ -21,12 +28,8 @@ export default function OneImage() {
         <div className="oneImage">
             <div className="header">
                 <div className='people-components'>
-                    <HeaderPeople />
-                    <HeaderPeople />
-                    <HeaderPeople />
-                    <HeaderPeople />
-                    <HeaderPeople />
-                    <span className='people-num-left'>21+</span>
+                    {displayOnlyFiveUsers(usersWhoSavedImage).usersToReturn.map(u => <HeaderPeople key={u.id} user={u} />)}
+                    {displayOnlyFiveUsers(usersWhoSavedImage).peopleLeft < 5 ? <span className='people-num-left'>{displayOnlyFiveUsers(usersWhoSavedImage).peopleLeft} +</span> : null}
                 </div>
 
                 <div className="header-right">

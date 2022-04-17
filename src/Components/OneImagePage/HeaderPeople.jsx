@@ -1,9 +1,9 @@
 import React from 'react'
 
-export default function HeaderPeople() {
+export default function HeaderPeople({ user }) {
     return (
         <div className="header-people">
-            <img src="https://avatars.dicebear.com/api/avataaars/Arita.svg" alt="" />
+            <img src={user.avatar} alt="" />
         </div>
     )
 }
