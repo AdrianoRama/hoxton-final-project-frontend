@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useStore } from '../../Store'
 import CollectionImages from './CollectionImages'
 import './collectionPage.css'
@@ -6,7 +6,6 @@ import './collectionPage.css'
 export default function CollectionPage() {
     const clickedCollection = useStore(store => store.clickedCollection)
     const user = useStore(store => store.user)
-    console.log(clickedCollection)
 
     return (
         <>

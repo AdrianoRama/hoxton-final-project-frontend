@@ -11,6 +11,15 @@ export default function CollectionImages() {
     const navigate = useNavigate()
     const [images, setImages] = useState([])
 
+    const clickedCollection = useStore(store => store.clickedCollection)
+    const getCollectionImages = useStore(store => store.getCollectionImages)
+    const collectionImages = useStore(store => store.collectionImages)
+    console.log(clickedCollection)
+
+    useEffect(() => {
+        getCollectionImages(clickedCollection.id)
+    }, [])
+
 
 
     useEffect(() => {
@@ -29,7 +38,7 @@ export default function CollectionImages() {
                 )
         }
     }, [])
-
+    console.log('collectionImages:', collectionImages)
     const breakpoints = {
         default: 5,
         1100: 3,
@@ -46,18 +55,21 @@ export default function CollectionImages() {
 
     return (
         <div className='app__main'>
+
             <Masonry
                 breakpointCols={breakpoints}
                 className="my-masonry-grid"
                 columnClassName="my-masonry-grid_column">
-                {images?.map(image => (
+                {collectionImages?.map(image => (
                     <>
-                        <div className="app__main-img" onClick={() => { navigate(`/oneImage/${image.id}`) }} >
-                            <img key={image.id} src={image.link} alt="" />
+                        <div className="app__main-img" onClick={() => { navigate(`/oneImage/${image.image.id}`) }} >
+                            <img key={image.image.id} src={image.image.link} alt="" />
                         </div>
+
                     </>
                 ))}
             </Masonry>
+            {collectionImages.length === 0 ? <h1 className='no-images-h1'>There is nothing here yet.</h1> : null}
         </div>
     )
 }
