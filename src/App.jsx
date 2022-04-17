@@ -30,7 +30,10 @@ function App() {
   }, [])
 
   return (
-    <div onClick={() => { setProfVisible(false), setAddVisible(false), setShowUserList(false) }} className="App">
+    <div onClick={(e) => {
+      e.stopPropagation()
+      setProfVisible(false), setAddVisible(false), setShowUserList(false)
+    }} className="App">
       <Routes>
         <Route index element={<Navigate replace to={'/welcome'} />} />
         <Route path='/welcome' element={<WelcomePage />} />

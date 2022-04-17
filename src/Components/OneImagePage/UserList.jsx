@@ -11,7 +11,9 @@ export default function UserList({ imageId }) {
         getUsersWhoSavedImage(imageId)
     }, [])
     return (
-        <div className={showUserList ? 'app__userList' : 'app__userList__off'}>
+        <div className={showUserList ? 'app__userList' : 'app__userList__off'} onClick={(e) => {
+            e.stopPropagation()
+        }}>
             {usersWhoSavedImage.map(u => <UserListItem key={u.id} user={u} />)}
 
 

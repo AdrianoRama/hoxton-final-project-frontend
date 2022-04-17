@@ -12,6 +12,7 @@ export const useStore = create((set, get) => ({
     collectionImages: [],
     usersWhoSavedImage: [],
     showUserList: false,
+    followUserFromList: null,
     logIn: (email, password) => {
         fetch('http://localhost:4001/sign-in', {
             method: 'POST',
@@ -177,6 +178,9 @@ export const useStore = create((set, get) => ({
     },
     setShowUserList: (val) => {
         set({ showUserList: val })
+    },
+    setFollowUserFromList: (user) => {
+        set({ followUserFromList: user })
     }
 }))
 
