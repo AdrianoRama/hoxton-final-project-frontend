@@ -47,7 +47,7 @@ export default function OneImage() {
             <div className="oneImage-main">
                 <img className="oneImage-image" src={image?.link} alt="image" />
             </div>
-            {showUserList ? <UserList /> : null}
+            {showUserList ? <UserList imageId={Number(params.id)} /> : null}
         </div>
     )
 
