@@ -166,7 +166,11 @@ export const useStore = create((set, get) => ({
             })
     },
     getUsersWhoSavedImage: (imageId) => {
-        fetch(`http://localhost:4001/savedImages/${imageId}`).then(res => res.json())
+        fetch(`http://localhost:4001/savedImages/${imageId}`, {
+            headers: {
+                Authorization: localStorage.token
+            }
+        }).then(res => res.json())
             .then(data => {
                 if (data.error) {
                     alert(data.error)
