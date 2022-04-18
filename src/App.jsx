@@ -40,7 +40,7 @@ function App() {
         {/* <Route path='/profile/:username' element={<ProfilePage />} /> */}
         <Route path='/join' element={<Join />} />
         <Route path='/login' element={<LogIn />} />
-        <Route path='/oneImage/:id' element={<OneImage />} />
+        <Route path='/oneImage/:id' element={<OneImage setSaved={setSaved} />} />
         <Route path='/home' element={<Home setProfVisible={setProfVisible} profVisible={profVisible} setAddVisible={setAddVisible} addVisible={addVisible} />} >
           <Route path='/home/:username/board/:collection' element={<CollectionPage />} />
           <Route path='/home/:username' element={<ProfilePage />} >

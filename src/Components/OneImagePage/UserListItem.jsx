@@ -51,38 +51,22 @@ export default function UserListItem({ u }) {
             </div>
             <div className="button-container">
 
-                {followed ?
-                    (<Button variant="contained" className='userList__follow' style={{
-                        color: "black",
-                        fontSize: "9px",
-                        backgroundColor: 'white',
-                        borderRadius: "5rem",
-                        width: "4.8rem",
-                        fontWeight: "400"
+
+                <Button variant="contained" className='userList__follow' style={{
+                    color: "black",
+                    fontSize: "9px",
+                    backgroundColor: 'white',
+                    borderRadius: "5rem",
+                    width: "4.8rem",
+                    fontWeight: "400"
+                }}
+                    onClick={(e) => {
+
+                        followUserFunc(u.username)
+
                     }}
-                        onClick={(e) => {
+                >{followed ? 'Following' : 'Follow'}</Button>
 
-                            followUserFunc(u.username)
-
-                        }}
-                    >Following</Button>
-                    )
-
-                    :
-                    (<Button variant="contained" className='userList__follow' style={{
-                        color: "black",
-                        fontSize: "9px",
-                        backgroundColor: 'white',
-                        borderRadius: "5rem",
-                        width: "4.8rem",
-                        fontWeight: "400"
-                    }}
-                        onClick={() => {
-                            followUserFunc(u.username)
-                        }}
-                    >Follow</Button>
-                    )
-                }
 
             </div>
         </div>

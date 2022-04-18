@@ -1,12 +1,12 @@
 import './OneImage.css';
 import { useStore } from "../../Store"
 import { useNavigate, useParams } from 'react-router-dom';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import HeaderPeople from './HeaderPeople';
 import { displayOnlyFiveUsers } from '../../helpers';
 import UserList from './UserList';
 
-export default function OneImage() {
+export default function OneImage({ setSaved }) {
     const navigate = useNavigate()
 
     const params = useParams()
@@ -15,6 +15,12 @@ export default function OneImage() {
     const usersWhoSavedImage = useStore(store => store.usersWhoSavedImage)
     const showUserList = useStore(store => store.showUserList)
     const setShowUserList = useStore(store => store.setShowUserList)
+    const [alreadySaved, setAlreadySaved] = useState(false)
+
+    const getUserImages = useStore(store => store.getUserImages)
+    const userFoundImages = useStore(store => store.userFoundImages)
+    const user = useStore(store => store.user)
+    const image = useStore(store => store.image)
 
     useEffect(() => {
         getImageById(params.id)
@@ -24,8 +30,47 @@ export default function OneImage() {
         getUsersWhoSavedImage(Number(params.id))
     }, [])
 
-    const image = useStore(store => store.image)
-    console.log(image)
+    useEffect(() => {
+        if (user) {
+            getUserImages(user?.username)
+        }
+
+
+
+    }, [user])
+
+    console.log('Already saved: ', alreadySaved)
+
+    function saveImg(id) {
+        fetch(`http://localhost:4001/save`, {
+            method: 'POST',
+            headers: {
+                Authorization: localStorage.token,
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                imageId: id
+            })
+        }).then(resp => resp.json())
+            .then(saveFromServer => {
+                setSaved(saveFromServer)
+                setAlreadySaved(true)
+            }
+            )
+    }
+    useEffect(() => {
+        if (userFoundImages) {
+            const checkIfSaved = userFoundImages.find(i => i.id === image.id)
+            if (checkIfSaved) {
+                setAlreadySaved(true)
+            } else {
+                setAlreadySaved(false)
+            }
+        }
+
+    }, [userFoundImages])
+
+    console.log('user images', userFoundImages)
 
     return (
         <div className="oneImage">
@@ -38,7 +83,10 @@ export default function OneImage() {
                 </div>
 
                 <div className="header-right">
-                    <span className="header-save">SAVE</span>
+
+                    <span className="header-save" onClick={() => {
+                        saveImg(image.id)
+                    }}> {alreadySaved ? null : 'SAVE'} </span>
                     <span className="header-close">ShOW INFO</span>
                     <span onClick={() => { navigate(-1) }} className="header-close">X</span>
                 </div>
