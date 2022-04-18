@@ -2,11 +2,13 @@ import { Button } from '@mui/material'
 import React, { useEffect, useState } from 'react'
 import { useStore } from '../../Store'
 
-export default function UserListItem({ user }) {
+export default function UserListItem({ u }) {
     const followUser = useStore(store => store.followUser)
     const setFollowUserFromList = useStore(store => store.setFollowUserFromList)
-
+    const user = useStore(store => store.user)
+    const [userFollowsList, setUserFollowsList] = useState([])
     const [followed, setFollowed] = useState(false)
+
 
     function followUserFunc(username) {
         followUser(username).then(data => {
@@ -20,18 +22,32 @@ export default function UserListItem({ user }) {
         })
     }
 
-
+    useEffect(() => {
+        fetch(`http://localhost:4001/getFollowing/${user.id}`).then(res => res.json()).then(data => {
+            if (data.error) {
+                alert(data.error)
+            } else {
+                setUserFollowsList(data)
+                const alreadyFollowsUser = data.find(userFromData => userFromData.id === u.id)
+                if (alreadyFollowsUser) {
+                    setFollowed(true)
+                } else {
+                    setFollowed(false)
+                }
+            }
+        })
+    }, [followed])
 
     return (
 
         <div className='userList-container'>
             <div className="image__div">
-                <img src={user.avatar} alt="" />
+                <img src={u.avatar} alt="" />
             </div>
 
             <div className='user__info'>
-                <h3>{user.name}</h3>
-                <p>@{user.username}</p>
+                <h3>{u.name}</h3>
+                <p>@{u.username}</p>
             </div>
             <div className="button-container">
 
@@ -46,7 +62,7 @@ export default function UserListItem({ user }) {
                     }}
                         onClick={(e) => {
 
-                            followUserFunc(user.username)
+                            followUserFunc(u.username)
 
                         }}
                     >Following</Button>
@@ -62,7 +78,7 @@ export default function UserListItem({ user }) {
                         fontWeight: "400"
                     }}
                         onClick={() => {
-                            followUserFunc(user.username)
+                            followUserFunc(u.username)
                         }}
                     >Follow</Button>
                     )
