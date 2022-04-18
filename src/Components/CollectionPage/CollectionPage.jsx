@@ -12,8 +12,8 @@ export default function CollectionPage() {
         <>
             <div className='app__collection'>
                 <div className="app__collection-info">
-                    <h1>{clickedCollection.name}</h1>
-                    <img src={userFound.avatar} alt="" />
+                    <h1>{clickedCollection?.name}</h1>
+                    <img src={userFound?.avatar} alt="" />
                 </div>
                 <CollectionImages />
 

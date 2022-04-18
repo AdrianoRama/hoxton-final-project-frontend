@@ -3,7 +3,7 @@ import '../Main/main.css'
 import { useStore } from "../../Store"
 import { AddBox } from '@material-ui/icons'
 import Masonry from 'react-masonry-css'
-import { useNavigate } from 'react-router-dom'
+import { useLocation, useNavigate } from 'react-router-dom'
 
 
 export default function CollectionImages() {
@@ -14,11 +14,15 @@ export default function CollectionImages() {
     const clickedCollection = useStore(store => store.clickedCollection)
     const getCollectionImages = useStore(store => store.getCollectionImages)
     const collectionImages = useStore(store => store.collectionImages)
-    console.log(clickedCollection)
+    console.log('clickedCollection: ', clickedCollection)
+    const location = useLocation()
 
     useEffect(() => {
-        getCollectionImages(clickedCollection.id)
-    }, [])
+        if (clickedCollection) {
+            getCollectionImages(clickedCollection.id)
+        }
+
+    }, [location])
 
 
 

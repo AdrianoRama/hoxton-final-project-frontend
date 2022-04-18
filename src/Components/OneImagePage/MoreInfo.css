@@ -1,0 +1,109 @@
+.more__info__container {
+    color: white;
+    padding: 10px;
+    width: 300px;
+    border: solid 1px red;
+}
+
+.header-close {
+    display: flex;
+    align-items: center;
+}
+
+.header-show {
+    padding-left: 2rem;
+}
+
+.header-show:hover {
+    color: #2e36ff;
+    cursor: pointer;
+}
+
+.add__to_board {
+    border: solid 2px rgba(255, 255, 255, 0.2);
+    display: flex;
+    padding: 0.5rem;
+    align-items: center;
+    cursor: pointer;
+}
+
+.text {
+    width: 50%;
+    display: flex;
+    justify-content: start;
+
+}
+
+.arrow {
+    width: 50%;
+    display: flex;
+    justify-content: end;
+}
+
+.collection__container__list {
+    display: flex;
+    width: 100%;
+    padding: 1.5rem;
+}
+
+.collection__container__list:hover {
+    color: blue;
+    cursor: pointer;
+}
+
+.collection__image__count {
+    display: flex;
+    width: 50%;
+    justify-content: end;
+}
+
+.collection__name {
+    display: flex;
+    width: 50%;
+    justify-content: start;
+}
+
+.app__header-add__collection__menu {
+    position: relative;
+}
+
+.add-drop__collection__menu {
+    position: absolute;
+    color: white;
+    top: 15px;
+    right: 35px;
+    border: 1px solid #464646;
+    width: 10rem;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    background-color: black;
+    border-radius: .5rem;
+    color: #b4b4b4;
+    opacity: 1;
+    pointer-events: all;
+    transition: all 0.4s ease;
+    z-index: 10;
+}
+
+.add-drop-off__collection__menu {
+    position: absolute;
+    color: white;
+    top: 40px;
+    right: 10px;
+    border: 1px solid #464646;
+    width: 10rem;
+    height: 8rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    background-color: black;
+    border-radius: .5rem;
+    color: #b4b4b4;
+    opacity: 0;
+    pointer-events: all;
+    transition: all 0.4s ease;
+}

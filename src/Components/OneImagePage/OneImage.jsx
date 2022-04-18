@@ -5,6 +5,8 @@ import { useEffect, useState } from 'react';
 import HeaderPeople from './HeaderPeople';
 import { displayOnlyFiveUsers } from '../../helpers';
 import UserList from './UserList';
+import MoreInfo from './MoreInfo';
+import { ArrowRight, ArrowRightAlt, ArrowRightAltOutlined, ArrowRightOutlined } from '@material-ui/icons';
 
 export default function OneImage({ setSaved }) {
     const navigate = useNavigate()
@@ -21,6 +23,9 @@ export default function OneImage({ setSaved }) {
     const userFoundImages = useStore(store => store.userFoundImages)
     const user = useStore(store => store.user)
     const image = useStore(store => store.image)
+
+
+    const [showRightMenu, setShowRightMenu] = useState(true)
 
     useEffect(() => {
         getImageById(params.id)
@@ -60,7 +65,7 @@ export default function OneImage({ setSaved }) {
     }
     useEffect(() => {
         if (userFoundImages) {
-            const checkIfSaved = userFoundImages.find(i => i.id === image.id)
+            const checkIfSaved = userFoundImages.find(i => i.id === image?.id)
             if (checkIfSaved) {
                 setAlreadySaved(true)
             } else {
@@ -74,28 +79,40 @@ export default function OneImage({ setSaved }) {
 
     return (
         <div className="oneImage">
-            <div className="header">
-                <div className='people-components' onMouseOver={() => {
-                    setShowUserList(true)
-                }}>
-                    {displayOnlyFiveUsers(usersWhoSavedImage).usersToReturn.map(u => <HeaderPeople key={u.id} user={u} />)}
-                    {displayOnlyFiveUsers(usersWhoSavedImage).peopleLeft !== 0 ? <span className='people-num-left'>{displayOnlyFiveUsers(usersWhoSavedImage).peopleLeft} +</span> : null}
+            <div className="left__side">
+                <div className="header">
+                    <div className='people-components' onMouseOver={() => {
+                        setShowUserList(true)
+                    }}>
+                        {displayOnlyFiveUsers(usersWhoSavedImage).usersToReturn.map(u => <HeaderPeople key={u.id} user={u} />)}
+                        {displayOnlyFiveUsers(usersWhoSavedImage).peopleLeft !== 0 ? <span className='people-num-left'>{displayOnlyFiveUsers(usersWhoSavedImage).peopleLeft} +</span> : null}
+                    </div>
+
+                    <div className="header-right">
+
+                        <span className="header-save" onClick={() => {
+                            saveImg(image.id)
+                        }}> {alreadySaved ? null : 'SAVE'} </span>
+
+                        {showRightMenu ? <span onClick={() => {
+                            setShowRightMenu(false)
+                        }} className='header-close'>HIDE INFO {<ArrowRightOutlined />}</span> :
+                            <span className="header-show" onClick={() => {
+                                setShowRightMenu(true)
+                            }}>SHOW INFO</span>}
+
+
+                        <span onClick={() => { navigate(-1) }} className="header-close">X</span>
+                    </div>
+
                 </div>
-
-                <div className="header-right">
-
-                    <span className="header-save" onClick={() => {
-                        saveImg(image.id)
-                    }}> {alreadySaved ? null : 'SAVE'} </span>
-                    <span className="header-close">ShOW INFO</span>
-                    <span onClick={() => { navigate(-1) }} className="header-close">X</span>
+                <div className="oneImage-main">
+                    <img className="oneImage-image" src={image?.link} alt="image" />
                 </div>
+                {showUserList ? <UserList imageId={Number(params.id)} /> : null}
+            </div>
 
-            </div>
-            <div className="oneImage-main">
-                <img className="oneImage-image" src={image?.link} alt="image" />
-            </div>
-            {showUserList ? <UserList imageId={Number(params.id)} /> : null}
+            {showRightMenu ? <MoreInfo /> : null}
         </div>
     )
 

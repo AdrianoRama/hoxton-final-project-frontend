@@ -13,6 +13,7 @@ export const useStore = create((set, get) => ({
     usersWhoSavedImage: [],
     showUserList: false,
     followUserFromList: null,
+    collectionsPerImage: [],
     logIn: (email, password) => {
         fetch('http://localhost:4001/sign-in', {
             method: 'POST',
@@ -185,6 +186,20 @@ export const useStore = create((set, get) => ({
     },
     setFollowUserFromList: (user) => {
         set({ followUserFromList: user })
+    },
+    getCollectionsPerImage: (imageId) => {
+        fetch(`http://localhost:4001/imageCollections/${imageId}`, {
+            headers: {
+                Authorization: localStorage.token
+            }
+        }).then(res => res.json())
+            .then(data => {
+                if (data.error) {
+                    alert(data.error)
+                } else {
+                    set({ collectionsPerImage: data })
+                }
+            })
     }
 }))
 
