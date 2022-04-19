@@ -26,6 +26,11 @@ function ProfilePage() {
     const followUser = useStore(store => store.followUser)
     const unfollowUser = useStore(store => store.unfollowUser)
 
+    const validate = useStore(store => store.validate)
+
+    useEffect(() => {
+        validate()
+    }, [])
 
     useEffect(() => {
         getUserByUsername(params.username)
@@ -78,14 +83,18 @@ function ProfilePage() {
             <div className='profile_info'>
                 <img className='profile_picture' src={userFound?.avatar} alt="" />
                 <h1 className='profile_name'>{userFound?.name}</h1>
-                {(user?.username === userFound?.username) ? <Button variant="outlined" className='editButton' style={{
+                {(user?.username === userFound?.username) ? <Button variant="outlined" className='editButton' style={
+                    {
                     backgroundColor: '#212121',
                     color: 'white',
                     border: 'none',
                     borderRadius: '5rem',
                     fontWeight: '400',
-                    width: '9rem'
-                }}>Edit Profile</Button> :
+                    width: '9rem',
+                }
+            }
+            onClick={() => navigate('/home/settings') 
+        } >Edit Profile</Button> :
                     (userFollows ? <Button onClick={() => {
                         unfollowUser(userFound?.username).then(data => {
                             let userFollowersCopy = JSON.parse(JSON.stringify(userFollowers))

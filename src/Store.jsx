@@ -222,6 +222,23 @@ export const useStore = create((set, get) => ({
             .then(data => {
                 set({ colors: data })
             })
+    },
+    editProfile: (name, email, username, password, avatar) => {
+        return fetch('http://localhost:4001/update', {
+            method: 'PATCH',
+            headers: {
+                Authorization: localStorage.token,
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ name, email, username, password, avatar })
+        }).then(res => res.json())
+        .then(data => {
+            if (data.error) {
+                alert(data.error)
+            } else {
+                set({ user: data })
+            }
+        })
     }
 }))
 

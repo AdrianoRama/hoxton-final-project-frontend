@@ -43,7 +43,6 @@ function App() {
     }} className="App">
       {showColorPalette ? <Colors /> : null}
       <Routes>
-        <Route path='/settings' element={<SettingsPage />} />
         <Route index element={<Navigate replace to={'/welcome'} />} />
         <Route path='/welcome' element={<WelcomePage />} />
         {/* <Route path='/profile/:username' element={<ProfilePage />} /> */}
@@ -52,6 +51,8 @@ function App() {
         <Route path='/oneImage/:id' element={<OneImage setSaved={setSaved} />} />
         <Route path='/home' element={<Home setProfVisible={setProfVisible} profVisible={profVisible} setAddVisible={setAddVisible} addVisible={addVisible} />} >
           <Route path='/home/:username/board/:collection' element={<CollectionPage />} />
+          <Route path='/home/settings' element={<SettingsPage />} />
+
           <Route path='/home/:username' element={<ProfilePage />} >
             <Route path='/home/:username/board' element={<Board />} >
             </Route>
