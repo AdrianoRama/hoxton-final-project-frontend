@@ -29,7 +29,7 @@ export default function Main({ setSaved, saved }) {
 
 
     useEffect(() => {
-        if (user) {
+        if (localStorage.token) {
             fetch(`http://localhost:4001/images`,
                 { headers: { Authorization: localStorage.token } }
             ).then(resp => resp.json())

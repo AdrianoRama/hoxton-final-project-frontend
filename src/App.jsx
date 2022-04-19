@@ -15,6 +15,7 @@ import SavedImages from './Components/profilePage/SavedImages'
 import Board from './Components/BoardPage/Board'
 import UserFollowers from './Components/userFollowers/UserFollowers'
 import CollectionPage from './Components/CollectionPage/CollectionPage'
+import Colors from './Components/Search/Colors'
 
 function App() {
   const user = useStore(store => store.user)
@@ -23,6 +24,8 @@ function App() {
   const [addVisible, setAddVisible] = useState(false)
   const [saved, setSaved] = useState(null)
   const setShowUserList = useStore(store => store.setShowUserList)
+  const [showColorPalette, setShowColorPalette] = useState(false)
+
 
 
   useEffect(() => {
@@ -30,10 +33,12 @@ function App() {
   }, [])
 
   return (
+
     <div onClick={(e) => {
       e.stopPropagation()
       setProfVisible(false), setAddVisible(false), setShowUserList(false)
     }} className="App">
+      {showColorPalette ? <Colors /> : null}
       <Routes>
         <Route index element={<Navigate replace to={'/welcome'} />} />
         <Route path='/welcome' element={<WelcomePage />} />

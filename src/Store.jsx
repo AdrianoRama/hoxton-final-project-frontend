@@ -14,6 +14,7 @@ export const useStore = create((set, get) => ({
     showUserList: false,
     followUserFromList: null,
     collectionsPerImage: [],
+    colors: [],
     logIn: (email, password) => {
         fetch('http://localhost:4001/sign-in', {
             method: 'POST',
@@ -215,6 +216,12 @@ export const useStore = create((set, get) => ({
     },
     setUserFoundCollections: (data) => {
         set({ userFoundCollections: data })
+    },
+    getColors: () => {
+        fetch(`http://localhost:4001/colors`).then(res => res.json())
+            .then(data => {
+                set({ colors: data })
+            })
     }
 }))
 

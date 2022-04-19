@@ -1,0 +1,17 @@
+.colors-container {
+    position: fixed;
+    height: 100vh;
+    left: 0;
+    right: 0;
+    z-index: 10;
+    border: solid 5px red;
+    background-color: rgba(255, 255, 255, 0.5);
+    display: grid;
+    grid-template-columns: repeat(auto-fit, 300px);
+    cursor: pointer;
+
+}
+
+.colors-item {
+    height: 300px;
+}
