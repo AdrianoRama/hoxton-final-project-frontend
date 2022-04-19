@@ -17,7 +17,6 @@ import UserFollowers from './Components/userFollowers/UserFollowers'
 import CollectionPage from './Components/CollectionPage/CollectionPage'
 
 import SettingsPage from './Components/SettingsPage/SettingsPage'
-=======
 import Colors from './Components/Search/Colors'
 
 
