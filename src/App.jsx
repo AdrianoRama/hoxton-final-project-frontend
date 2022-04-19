@@ -15,6 +15,7 @@ import SavedImages from './Components/profilePage/SavedImages'
 import Board from './Components/BoardPage/Board'
 import UserFollowers from './Components/userFollowers/UserFollowers'
 import CollectionPage from './Components/CollectionPage/CollectionPage'
+import SettingsPage from './Components/SettingsPage/SettingsPage'
 
 function App() {
   const user = useStore(store => store.user)
@@ -35,6 +36,7 @@ function App() {
       setProfVisible(false), setAddVisible(false), setShowUserList(false)
     }} className="App">
       <Routes>
+        <Route path='/settings' element={<SettingsPage />} />
         <Route index element={<Navigate replace to={'/welcome'} />} />
         <Route path='/welcome' element={<WelcomePage />} />
         {/* <Route path='/profile/:username' element={<ProfilePage />} /> */}

@@ -1,0 +1,74 @@
+.settingsFormWrapper {
+    display: grid;
+    place-content: center;
+    margin-top: 1rem;
+    margin-bottom: 3rem;
+}
+
+.settingsTitle {
+    color: white;
+    margin-bottom: 2rem;
+    border-bottom: 1px solid rgb(49, 44, 44);
+}
+
+
+
+.settingsForm {
+    display: grid;
+    grid-auto-flow: row;
+    place-content: center;
+    gap: 1rem;
+
+
+}
+
+.editAvatarButton {
+    background-color: black;
+    border: none;
+
+}
+
+.editAvatarButton img {
+    width: 108px;
+    height: 108px;
+    border-radius: 50%;
+
+}
+
+.editAvatarButton input {
+    display: none;
+}
+
+.editSpan {
+    color: white;
+}
+
+
+.form-label {
+    display: grid;
+    color: white;
+
+}
+
+.form-label span {
+    color: gray;
+    font-size: 0.9rem;
+}
+
+
+.form-label input {
+    color: white;
+    background-color: black;
+    font-size: 1.3rem;
+    border: solid 1px rgb(71, 67, 67);
+    border-radius: 8px;
+    padding: 12px;
+}
+
+.editChanges {
+    margin-top: 2rem;
+    font-size: 1.2rem;
+    border-radius: 8px;
+    background-color: white;
+    padding: 10px;
+}
