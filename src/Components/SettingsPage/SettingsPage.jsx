@@ -13,7 +13,7 @@ function SettingsPage() {
     const editProfile = useStore(store => store.editProfile)
     const validate = useStore(store => store.validate)
     const user = useStore(store => store.user)
-    const login = useStore(store => store.login)
+    const logIn = useStore(store => store.logIn)
 
     if (!user) return <h1>Loading...</h1>
 
@@ -39,10 +39,7 @@ function SettingsPage() {
                         const username = e.target.username.value
                         const password = e.target.password.value
                         const profilePicture = e.target.profilePicture.value
-                        editProfile(name, email, username, password, profilePicture).then(data => {
-                            // setNewUser(data)
-                            login(data.email, data.password)
-                        })
+                        editProfile(name, email, username, password, profilePicture)
                         setUpdate(true)
                     }}
                 >
