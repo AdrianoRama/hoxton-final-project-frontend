@@ -5,9 +5,9 @@ export function displayOnlyFiveUsers(allUsers) {
         usersToReturn = allUsers
         peopleLeft = 0;
     } else {
-        for (let i = 0; i < 5; i++) {
+        for (let i = 0; i < 4; i++) {
             usersToReturn.push(allUsers[i])
-            peopleLeft = allUsers.length - 5
+            peopleLeft = allUsers.length - 4
         }
     }
 

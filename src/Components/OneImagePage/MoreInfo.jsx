@@ -15,28 +15,31 @@ export default function MoreInfo() {
             getCollectionsPerImage(image.id)
         }
 
-    }, [image])
+    }, [image?.id])
 
     return (
         <div className='more__info__container'>
-            <h1>Title</h1>
-            <div className="add__to_board">
-                <span className='text' onClick={() => {
-                    if (showCollectionsMenu) {
-                        setShowCollectionsMenu(false)
-                    } else {
-                        setShowCollectionsMenu(true)
-                    }
+            <h1>{image?.title}</h1>
+            <div className="add__to_board" onClick={() => {
+                if (showCollectionsMenu) {
+                    setShowCollectionsMenu(false)
+                } else {
+                    setShowCollectionsMenu(true)
+                }
 
-                }}> Add to board</span>
+            }}>
+                <span className='text' > Add to board</span>
                 <span className='arrow'>{<ArrowDropDownOutlined />}</span>
 
             </div>
             {showCollectionsMenu ? <CollectionsMenu /> : null}
             <div className='list__container'>
-                <ul className='boards__list'>
-                    {collectionsPerImage.map(c => <li>{c.name}</li>)}
-                </ul>
+
+                {collectionsPerImage.map(c => <div className='list__container__collection__item'>
+                    <img src={image.link} alt="" />
+                    <span>{c.name}</span>
+                </div>)}
+
             </div>
 
         </div>
