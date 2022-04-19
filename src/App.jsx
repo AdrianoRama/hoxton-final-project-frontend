@@ -15,7 +15,11 @@ import SavedImages from './Components/profilePage/SavedImages'
 import Board from './Components/BoardPage/Board'
 import UserFollowers from './Components/userFollowers/UserFollowers'
 import CollectionPage from './Components/CollectionPage/CollectionPage'
+
+import SettingsPage from './Components/SettingsPage/SettingsPage'
+=======
 import Colors from './Components/Search/Colors'
+
 
 function App() {
   const user = useStore(store => store.user)
@@ -40,6 +44,7 @@ function App() {
     }} className="App">
       {showColorPalette ? <Colors /> : null}
       <Routes>
+        <Route path='/settings' element={<SettingsPage />} />
         <Route index element={<Navigate replace to={'/welcome'} />} />
         <Route path='/welcome' element={<WelcomePage />} />
         {/* <Route path='/profile/:username' element={<ProfilePage />} /> */}
