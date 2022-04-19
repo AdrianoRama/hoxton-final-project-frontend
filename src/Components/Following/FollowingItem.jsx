@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react'
 import { useStore } from '../../Store'
 
 
-export default function FollowingItem({ follow, following }) {
+export default function FollowingItem({ follow }) {
 
     return (
         <div className='followingItem__container'>
