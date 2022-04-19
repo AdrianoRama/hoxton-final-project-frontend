@@ -232,13 +232,16 @@ export const useStore = create((set, get) => ({
             },
             body: JSON.stringify({ name, email, username, password, avatar })
         }).then(res => res.json())
-        .then(data => {
-            if (data.error) {
-                alert(data.error)
-            } else {
-                set({ user: data })
-            }
-        })
+        // .then(data => {
+        //     if (data.error) {
+        //         alert(data.error)
+        //     } else {
+        //         set({ user: data })
+        //     }
+        // })
+    },
+    setNewUser: (data) => {
+        set({ user: data })
     }
 }))
 

@@ -34,7 +34,7 @@ function ProfilePage() {
 
     useEffect(() => {
         getUserByUsername(params.username)
-    }, [params.username])
+    }, [params.username, user])
 
     useEffect(() => {
         if (userFound) {
@@ -85,16 +85,16 @@ function ProfilePage() {
                 <h1 className='profile_name'>{userFound?.name}</h1>
                 {(user?.username === userFound?.username) ? <Button variant="outlined" className='editButton' style={
                     {
-                    backgroundColor: '#212121',
-                    color: 'white',
-                    border: 'none',
-                    borderRadius: '5rem',
-                    fontWeight: '400',
-                    width: '9rem',
+                        backgroundColor: '#212121',
+                        color: 'white',
+                        border: 'none',
+                        borderRadius: '5rem',
+                        fontWeight: '400',
+                        width: '9rem',
+                    }
                 }
-            }
-            onClick={() => navigate('/home/settings') 
-        } >Edit Profile</Button> :
+                    onClick={() => navigate('/home/settings')
+                    } >Edit Profile</Button> :
                     (userFollows ? <Button onClick={() => {
                         unfollowUser(userFound?.username).then(data => {
                             let userFollowersCopy = JSON.parse(JSON.stringify(userFollowers))

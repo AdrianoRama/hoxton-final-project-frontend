@@ -13,6 +13,7 @@ function SettingsPage() {
     const editProfile = useStore(store => store.editProfile)
     const validate = useStore(store => store.validate)
     const user = useStore(store => store.user)
+    const login = useStore(store => store.login)
 
     if (!user) return <h1>Loading...</h1>
 
@@ -30,7 +31,7 @@ function SettingsPage() {
                     </div>
                     <input type="file" />
                 </button>
-                <form className='settingsForm' 
+                <form className='settingsForm'
                     onSubmit={(e) => {
                         e.preventDefault()
                         const name = e.target.name.value
@@ -38,11 +39,14 @@ function SettingsPage() {
                         const username = e.target.username.value
                         const password = e.target.password.value
                         const profilePicture = e.target.profilePicture.value
-                        editProfile(name, email, username, password, profilePicture)
-                        setUpdate(true)            
+                        editProfile(name, email, username, password, profilePicture).then(data => {
+                            // setNewUser(data)
+                            login(data.email, data.password)
+                        })
+                        setUpdate(true)
                     }}
                 >
-                    { update ? <span className='ProfileUpdated.' style={{color: "blue"}}>Profile updated.</span> : null } 
+                    {update ? <span className='ProfileUpdated.' style={{ color: "blue" }}>Profile updated.</span> : null}
                     <label className='form-label'>
                         <span>Name</span>
                         <input
