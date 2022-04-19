@@ -200,6 +200,21 @@ export const useStore = create((set, get) => ({
                     set({ collectionsPerImage: data })
                 }
             })
+    },
+
+    saveImageToCollection: (imageId, collectionId) => {
+        return fetch(`http://localhost:4001/save`, {
+            method: 'POST',
+            headers: {
+                Authorization: localStorage.token,
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ imageId, collectionId })
+        }).then(res => res.json())
+
+    },
+    setUserFoundCollections: (data) => {
+        set({ userFoundCollections: data })
     }
 }))
 
