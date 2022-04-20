@@ -74,8 +74,8 @@ export default function CollectionsMenu() {
                 {userFoundCollections.map(collection => <div onClick={() => {
                     saveImageToCollectionFunc(image?.id, collection.id)
                 }} className='collection__container__list'>
-                    <span className='collection__name'>{collection.name}</span>
-                    <span className="collection__image__count">{collection._count.saved}</span>
+                    <span className='collection__name'>{collection?.name}</span>
+                    <span className="collection__image__count">{collection._count?.saved}</span>
                 </div>)}
 
 
