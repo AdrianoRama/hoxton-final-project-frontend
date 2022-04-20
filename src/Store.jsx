@@ -3,6 +3,7 @@ import create from 'zustand'
 
 export const useStore = create((set, get) => ({
     user: null,
+    users: [],
     image: null,
     userFound: null,
     userFoundImages: [],
@@ -16,6 +17,13 @@ export const useStore = create((set, get) => ({
     collectionsPerImage: [],
     colors: [],
     changeHeaderColor: false,
+
+    getUsers: () => {
+        fetch('http://localhost:4001/users')
+            .then(resp => resp.json())
+            .then(usersFromServer => set({ users: usersFromServer }))
+    },
+
     logIn: (email, password) => {
         fetch('http://localhost:4001/sign-in', {
             method: 'POST',
