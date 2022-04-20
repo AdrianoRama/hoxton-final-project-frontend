@@ -18,6 +18,7 @@ import CollectionPage from './Components/CollectionPage/CollectionPage'
 
 import SettingsPage from './Components/SettingsPage/SettingsPage'
 import Colors from './Components/Search/Colors'
+import SearchPage from './Components/Search/SearchPage'
 
 
 function App() {
@@ -52,6 +53,7 @@ function App() {
         <Route path='/home' element={<Home setProfVisible={setProfVisible} profVisible={profVisible} setAddVisible={setAddVisible} addVisible={addVisible} />} >
           <Route path='/home/:username/board/:collection' element={<CollectionPage />} />
           <Route path='/home/settings' element={<SettingsPage />} />
+          <Route path='/home/search' element={<SearchPage setSaved={setSaved} saved={saved} />} />
 
           <Route path='/home/:username' element={<ProfilePage />} >
             <Route path='/home/:username/board' element={<Board />} >
