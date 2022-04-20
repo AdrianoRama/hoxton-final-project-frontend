@@ -4,15 +4,15 @@
 }
 
 .app__searchPage-input {
-    height: 12rem;
+    height: 10rem;
     display: flex;
 }
 
 .app__searchPage-input input {
     width: 50rem;
     text-align: center;
-    font-size: 65px;
-    color: #d2d2d2;
+    font-size: 66px;
+    color: white;
 }
 
 .app__searchPage-input button {
