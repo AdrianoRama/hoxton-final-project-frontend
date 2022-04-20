@@ -62,7 +62,7 @@ function ProfilePage() {
                 })
         }
 
-    }, [userFound, user])
+    }, [userFound?.id, user])
 
     useEffect(() => {
         if (userFound) {
