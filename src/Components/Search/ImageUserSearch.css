@@ -1,19 +1,12 @@
 .imageUserSearch {
     color: #ffffff;
-    /* display: grid;
-    place-content: center; */
     display: flex;
     justify-content: center;
     align-items: center;
-
-    /* width: 50rem; */
+    margin-bottom: 50px;
 }
 
 .imageUserSearch-container {
-    /* display: grid;
-    grid-template-columns: 1fr 1fr;
-    place-items: center;
-    */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -24,7 +17,6 @@
     border-bottom: 1px solid #605f5f;
     width: 15rem;
     margin-left: 50px;
-
 }
 
 .imageSearch,

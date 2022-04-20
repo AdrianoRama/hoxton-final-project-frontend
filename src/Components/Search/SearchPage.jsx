@@ -34,9 +34,10 @@ export default function SearchPage({ setSaved, saved, setShowColorPalette }) {
                     console.log('searching for:', e.target.search.value)
                     // @ts-ignore
                     { imageSelected ? navigate(`/home/search/images/${e.target.search.value}`) : navigate(`/home/search/users/${e.target.search.value}`) }
+                    //@ts-ignore
                     setSearchValue(e.target.search.value)
                 }}>
-                    <Input type='text' name="search" placeholder='Search new inspiration' />
+                    <Input type='text' name="search" placeholder='Search new inspiration' required />
                 </form>
                 <div className="search">
                     <button className='byColor-btn' onClick={() => {
