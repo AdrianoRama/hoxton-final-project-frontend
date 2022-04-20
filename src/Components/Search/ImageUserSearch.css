@@ -1,0 +1,28 @@
+.imageUserSearch {
+    color: #ffffff;
+    display: grid;
+    place-content: center;
+}
+
+.imageUserSearch-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    place-items: center;
+    gap: 2rem;
+    padding: 0 1rem;
+    font-size: 16px;
+    font-weight: 200;
+    border-bottom: 1px solid #464646;
+}
+
+.imageSearch,
+.userSearch {
+    border-bottom: 2px solid #464646;
+    padding-bottom: 1rem;
+}
+
+.imageSearch-active,
+.userSearch-active {
+    border-bottom: 2px solid #ffffff;
+    padding-bottom: 1rem;
+}

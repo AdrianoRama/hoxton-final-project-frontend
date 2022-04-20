@@ -17,6 +17,11 @@ export const useStore = create((set, get) => ({
     collectionsPerImage: [],
     colors: [],
     changeHeaderColor: false,
+    userSelected: false,
+    imageSelected: true,
+
+    togleUserSelected: (value) => set({userSelected: value }),
+    togleImageSelected: (value) => set({imageSelected: value }),
 
     getUsers: () => {
         fetch('http://localhost:4001/suggested', {
