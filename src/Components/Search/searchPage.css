@@ -6,6 +6,7 @@
 .app__searchPage-input {
     height: 10rem;
     display: flex;
+    justify-content: center;
 }
 
 .app__searchPage-input input {
@@ -118,4 +119,9 @@
     font-weight: 500;
     font-size: 23px;
     margin-left: 4.5rem;
+}
+
+.byColor-btn {
+    z-index: 10;
+    cursor: pointer;
 }

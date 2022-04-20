@@ -46,7 +46,7 @@ function App() {
       e.stopPropagation()
       setProfVisible(false), setAddVisible(false), setShowUserList(false)
     }} className="App">
-      {showColorPalette ? <Colors /> : null}
+      {showColorPalette ? <Colors setShowColorPalette={setShowColorPalette} /> : null}
       <Routes>
         <Route index element={<Navigate replace to={'/welcome'} />} />
         <Route path='/welcome' element={<WelcomePage />} />
@@ -54,15 +54,17 @@ function App() {
         <Route path='/join' element={<Join />} />
         <Route path='/login' element={<LogIn />} />
         <Route path='/oneImage/:id' element={<OneImage setSaved={setSaved} />} />
+
         <Route path='/home' element={<Home setProfVisible={setProfVisible} profVisible={profVisible} setAddVisible={setAddVisible} addVisible={addVisible} />} >
           <Route path='/home/:username/board/:collection' element={<CollectionPage />} />
           <Route path='/home/settings' element={<SettingsPage />} />
-          <Route path='/home/search' element={<SearchPage setSaved={setSaved} saved={saved} />}>
-            <Route path='/home/search' element={<SearchMain />} />
 
+
+          <Route path='/home/search' element={<SearchPage setSaved={setSaved} saved={saved} setShowColorPalette={setShowColorPalette} />}>
+            <Route path='/home/search' element={<SearchMain saved={saved} setSaved={setSaved} />} />
             <Route path='/home/search' element={<ImageUserSearch />} >
-              <Route path='/home/search/images/:q' element={<ImageMain />} />
-              <Route path='/home/search/color/:q' element={<ColorMain />} />
+              <Route path='/home/search/images/:q' element={<ImageMain saved={saved} setSaved={setSaved} />} />
+              <Route path='/home/search/color/:q' element={<ColorMain saved={saved} setSaved={setSaved} />} />
             </Route>
           </Route>
 

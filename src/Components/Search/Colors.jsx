@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useStore } from '../../Store'
 import './Colors.css'
-export default function Colors() {
+export default function Colors({ setShowColorPalette }) {
     const getColors = useStore(store => store.getColors)
     const colors = useStore(store => store.colors)
     const navigate = useNavigate()
@@ -14,8 +14,9 @@ export default function Colors() {
     return (
         <div className='colors-container'>
             {colors.map(color => <div onClick={() => {
-                navigate(`/search?q=${color.name}`)
-            }} className='colors-item' style={{ background: color.name }}>Colors</div>)}
+                navigate(`/home/search/color/${color.name}`)
+                setShowColorPalette(false)
+            }} className='colors-item' style={{ background: `#${color.name}` }}>Colors</div>)}
         </div>
 
 

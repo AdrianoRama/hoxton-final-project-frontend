@@ -1,17 +1,19 @@
 .colors-container {
     position: fixed;
     height: 100vh;
+    width: 100vw;
     left: 0;
     right: 0;
     z-index: 10;
     border: solid 5px red;
     background-color: rgba(255, 255, 255, 0.5);
-    display: grid;
-    grid-template-columns: repeat(auto-fit, 300px);
+    display: flex;
     cursor: pointer;
-
+    z-index: 50;
+    justify-content: center;
 }
 
 .colors-item {
     height: 300px;
+    width: 20%;
 }
