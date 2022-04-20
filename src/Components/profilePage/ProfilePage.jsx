@@ -28,6 +28,7 @@ function ProfilePage() {
 
     const validate = useStore(store => store.validate)
 
+
     useEffect(() => {
         validate()
     }, [])
@@ -38,9 +39,10 @@ function ProfilePage() {
 
     useEffect(() => {
         if (userFound) {
-            getUserImages(userFound.username)
+            getUserImages(params.username)
+
         }
-    }, [params.username, userFound])
+    }, [params.username, userFound, user])
 
     useEffect(() => {
         if (userFound) {

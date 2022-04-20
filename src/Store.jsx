@@ -101,7 +101,7 @@ export const useStore = create((set, get) => ({
     },
     getUserImages: (username) => {
         fetch(`http://localhost:4001/saved/${username}`,
-            { headers: { Authorization: localStorage.token } }
+
         ).then(resp => resp.json())
             .then(imagesFromServer =>
                 set({ userFoundImages: imagesFromServer })
