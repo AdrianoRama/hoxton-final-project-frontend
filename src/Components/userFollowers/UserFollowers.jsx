@@ -28,16 +28,19 @@ export default function UserFollowers() {
     }, [userFound, user])
 
     useEffect(() => {
-        fetch(`http://localhost:4001/getFollowing/${userFound?.id}`)
-            .then(resp => resp.json())
-            .then(data => {
-                if (data.error) {
-                    alert(data.error)
-                } else {
-                    setFollowing(data)
-                }
-            })
-    }, [userFound?.id])
+        if (user && userFound) {
+            fetch(`http://localhost:4001/getFollowing/${user?.id}`)
+                .then(resp => resp.json())
+                .then(data => {
+                    if (data.error) {
+                        alert(data.error)
+                    } else {
+                        setFollowing(data)
+                    }
+                })
+        }
+
+    }, [user?.id])
 
     return (
         <div className='all-following'>
