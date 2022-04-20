@@ -39,6 +39,7 @@ export default function SavedImages({ setSaved, saved }) {
                         </div>
                     </>
                 ))}
+
             </Masonry>
         </div>
     )

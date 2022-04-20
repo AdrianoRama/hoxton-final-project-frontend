@@ -19,7 +19,11 @@ export const useStore = create((set, get) => ({
     changeHeaderColor: false,
 
     getUsers: () => {
-        fetch('http://localhost:4001/users')
+        fetch('http://localhost:4001/suggested', {
+            headers: {
+                Authorization: localStorage.token
+            }
+        })
             .then(resp => resp.json())
             .then(usersFromServer => set({ users: usersFromServer }))
     },
@@ -117,6 +121,7 @@ export const useStore = create((set, get) => ({
             )
 
     },
+
     getCollectionsById: (id) => {
         fetch(`http://localhost:4001/collections/${id}`)
             .then(resp => resp.json())

@@ -15,6 +15,7 @@ export default function SearchPage({ setSaved, saved }) {
         getUsers()
     }, [])
 
+    console.log('users:', users)
 
     return (
         <div className='app__searchPage'>
@@ -33,7 +34,8 @@ export default function SearchPage({ setSaved, saved }) {
                         {users.map(user => (
                             <>
                                 <div className="user-info">
-                                    <img src={user.images[0].link} alt="" />
+                                    <img src={user.images[0]?.link} alt="" />
+
                                     <div className="username-avatar">
                                         <Avatar src={user.avatar} style={{ width: '20px', height: '20px' }} />
                                         <p>@{user.username}</p>
