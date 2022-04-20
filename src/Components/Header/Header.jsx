@@ -44,7 +44,7 @@ export default function Header({ setProfVisible, profVisible, setAddVisible, add
                             <h3>{user?.name}</h3>
                             <p>View profile</p>
                         </div>
-                        <p className='drop-settings'>Settings</p>
+                        <p onClick={() => navigate('/home/settings')} className='drop-settings'>Settings</p>
                         <p onClick={logout} className='drop-logOut'>Log out</p>
                     </div>
                 </div>
