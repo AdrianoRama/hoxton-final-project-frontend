@@ -90,6 +90,11 @@
     border: none;
 }
 
+.app__searchPage_user-wrapper button:hover {
+    cursor: pointer;
+    background-color: rgb(211, 211, 211);
+}
+
 .username-avatar {
     padding-left: .5rem;
     display: flex;
