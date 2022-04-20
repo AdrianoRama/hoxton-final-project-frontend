@@ -2,7 +2,7 @@
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     margin: 0 5.25rem;
-    gap: 1.5rem;
+    gap: 3.5rem;
 }
 
 .board_box {
@@ -33,8 +33,8 @@
     opacity: 0.8;
 }
 
-.board_addBoard:hover + .board_title,
-.board:hover + .board_title   {
+.board_addBoard:hover+.board_title,
+.board:hover+.board_title {
     color: #707070;
 }
 
@@ -60,12 +60,12 @@
     .board__container {
         grid-template-columns: repeat(3, 1fr);
     }
-    
+
     .board_box {
         height: 250px;
     }
 }
-    
+
 @media screen and (max-width: 600px) {
     .board__container {
         grid-template-columns: repeat(2, 1fr);
