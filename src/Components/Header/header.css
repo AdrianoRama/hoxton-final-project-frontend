@@ -88,7 +88,7 @@
     opacity: 1;
     pointer-events: all;
     transition: all 0.4s ease;
-    z-index: 10;
+    z-index: 50;
 }
 
 .prof-drop-off {
@@ -186,7 +186,7 @@
     opacity: 1;
     pointer-events: all;
     transition: all 0.4s ease;
-    z-index: 10;
+    z-index: 50;
 }
 
 

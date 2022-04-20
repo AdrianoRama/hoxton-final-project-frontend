@@ -16,7 +16,7 @@ export default function Colors({ setShowColorPalette }) {
             {colors.map(color => <div onClick={() => {
                 navigate(`/home/search/color/${color.name}`)
                 setShowColorPalette(false)
-            }} className='colors-item' style={{ background: `#${color.name}` }}>Colors</div>)}
+            }} className='colors-item' style={{ background: `#${color.name}` }}></div>)}
         </div>
 
 

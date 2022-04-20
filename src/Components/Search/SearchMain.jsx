@@ -8,7 +8,7 @@ import { Avatar, Input } from '@mui/material'
 
 export default function SearchMain({ setSaved, saved }) {
 
-    
+
     const setChangeHeaderColor = useStore(store => store.setChangeHeaderColor)
     setChangeHeaderColor(false)
     const users = useStore(store => store.users)
@@ -17,6 +17,8 @@ export default function SearchMain({ setSaved, saved }) {
     useEffect(() => {
         getUsers()
     }, [])
+
+
 
     return (
         <>
