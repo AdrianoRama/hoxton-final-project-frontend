@@ -19,9 +19,12 @@ export const useStore = create((set, get) => ({
     changeHeaderColor: false,
     userSelected: false,
     imageSelected: true,
+    searchValue: '',
 
-    togleUserSelected: (value) => set({userSelected: value }),
-    togleImageSelected: (value) => set({imageSelected: value }),
+    togleUserSelected: (value) => set({ userSelected: value }),
+    togleImageSelected: (value) => set({ imageSelected: value }),
+
+    setSearchValue: (val) => set({ searchValue: val }),
 
     getUsers: () => {
         fetch('http://localhost:4001/suggested', {

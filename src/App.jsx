@@ -23,6 +23,7 @@ import ImageUserSearch from './Components/Search/ImageUserSearch'
 import SearchMain from './Components/Search/SearchMain'
 import ImageMain from './Components/Search/ImageMain'
 import ColorMain from './Components/Search/ColorMain'
+import UsersSearched from './Components/Search/UsersSearched'
 
 
 function App() {
@@ -65,6 +66,7 @@ function App() {
             <Route path='/home/search' element={<ImageUserSearch />} >
               <Route path='/home/search/images/:q' element={<ImageMain saved={saved} setSaved={setSaved} />} />
               <Route path='/home/search/color/:q' element={<ColorMain saved={saved} setSaved={setSaved} />} />
+              <Route path='/home/search/users/:q' element={<UsersSearched />} />
             </Route>
           </Route>
 

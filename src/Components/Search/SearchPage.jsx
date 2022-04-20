@@ -13,6 +13,11 @@ export default function SearchPage({ setSaved, saved, setShowColorPalette }) {
     const users = useStore(store => store.users)
     const getUsers = useStore(store => store.getUsers)
     const navigate = useNavigate()
+    const searchValue = useStore(store => store.searchValue)
+    const setSearchValue = useStore(store => store.setSearchValue)
+
+    const userSelected = useStore(store => store.userSelected)
+    const imageSelected = useStore(store => store.imageSelected)
 
     useEffect(() => {
         getUsers()
@@ -28,7 +33,8 @@ export default function SearchPage({ setSaved, saved, setShowColorPalette }) {
                     // @ts-ignore
                     console.log('searching for:', e.target.search.value)
                     // @ts-ignore
-                    navigate(`/home/search/images/${e.target.search.value}`)
+                    { imageSelected ? navigate(`/home/search/images/${e.target.search.value}`) : navigate(`/home/search/users/${e.target.search.value}`) }
+                    setSearchValue(e.target.search.value)
                 }}>
                     <Input type='text' name="search" placeholder='Search new inspiration' />
                 </form>
