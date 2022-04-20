@@ -1,9 +1,14 @@
 import { Avatar, Input } from '@mui/material'
 import React from 'react'
+import { useEffect } from 'react'
+import { useStore } from '../../Store'
 import Main from '../Main/Main'
 import './searchPage.css'
 
 export default function SearchPage({ setSaved, saved }) {
+    const setChangeHeaderColor = useStore(store => store.setChangeHeaderColor)
+    setChangeHeaderColor(false)
+
     return (
         <div className='app__searchPage'>
             <div className="app__searchPage-input">
@@ -38,3 +43,7 @@ export default function SearchPage({ setSaved, saved }) {
         </div>
     )
 }
+function setChangeHeaderColor(arg0) {
+    throw new Error('Function not implemented.')
+}
+

@@ -15,6 +15,7 @@ export const useStore = create((set, get) => ({
     followUserFromList: null,
     collectionsPerImage: [],
     colors: [],
+    changeHeaderColor: false,
     logIn: (email, password) => {
         fetch('http://localhost:4001/sign-in', {
             method: 'POST',
@@ -242,6 +243,10 @@ export const useStore = create((set, get) => ({
     },
     setNewUser: (data) => {
         set({ user: data })
+    },
+
+    setChangeHeaderColor: (data) => {
+        set({ changeHeaderColor: data })
     }
 }))
 
