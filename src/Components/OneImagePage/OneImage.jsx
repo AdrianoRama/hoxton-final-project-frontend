@@ -24,8 +24,9 @@ export default function OneImage({ setSaved }) {
     const user = useStore(store => store.user)
     const image = useStore(store => store.image)
 
-
     const [showRightMenu, setShowRightMenu] = useState(true)
+    const [belongsToUser, setBelongsToUser] = useState(false)
+    const userFoundCreatedImages = useStore(store => store.userFoundCreatedImages)
 
     useEffect(() => {
         getImageById(params.id)
@@ -75,6 +76,17 @@ export default function OneImage({ setSaved }) {
 
     }, [userFoundImages])
 
+    useEffect(() => {
+        if (userFoundCreatedImages) {
+            const checkIfBelongsToUser = userFoundCreatedImages.find(i => i.userId === user.id)
+            if (checkIfBelongsToUser) {
+                setBelongsToUser(true)
+            } else {
+                setBelongsToUser(false)
+            }
+        }
+    }, [userFoundCreatedImages])
+
     console.log('user images', userFoundImages)
 
     return (
@@ -92,7 +104,7 @@ export default function OneImage({ setSaved }) {
 
                         <span className="header-save" onClick={() => {
                             saveImg(image.id)
-                        }}> {alreadySaved ? null : 'SAVE'} </span>
+                        }}> {alreadySaved || belongsToUser ? null : 'SAVE'} </span>
 
                         {showRightMenu ? <span onClick={() => {
                             setShowRightMenu(false)
