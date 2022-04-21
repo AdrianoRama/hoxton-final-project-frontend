@@ -19,6 +19,12 @@ export default function ImageUserSearch() {
     // const setSearchValue = useStore(store => store.setSearchValue)
     console.log(searchValue)
 
+    useEffect(() => {
+        if (searchValue === '') {
+            navigate(`/home/search`)
+        }
+    }, [searchValue])
+
     return (<>
         <div className="imageUserSearch">
             <div className="imageUserSearch-container">
@@ -31,6 +37,7 @@ export default function ImageUserSearch() {
                     onClick={() => {
                         togleUserSelected(true)
                         togleImageSelected(false)
+
                         navigate(`/home/search/users/${searchValue}`)
                     }}>User</div>
             </div>
