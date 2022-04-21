@@ -11,20 +11,23 @@ export default function UserFollowers() {
     const setUserFollowsFunction = useStore(store => store.setUserFollowsFunction)
 
     useEffect(() => {
-        fetch(`http://localhost:4001/getFollowers/${userFound?.id}`).then(res => res.json())
-            .then(data => {
-                if (data.error) {
-                    alert(data.error)
-                } else {
-                    setFollowers(data)
-                    const matches = data.find(u => u.id === user?.id)
-                    if (matches) {
-                        setUserFollowsFunction(true)
+        if (userFound) {
+            fetch(`http://localhost:4001/getFollowers/${userFound?.id}`).then(res => res.json())
+                .then(data => {
+                    if (data.error) {
+                        alert(data.error)
                     } else {
-                        setUserFollowsFunction(false)
+                        setFollowers(data)
+                        const matches = data.find(u => u.id === user?.id)
+                        if (matches) {
+                            setUserFollowsFunction(true)
+                        } else {
+                            setUserFollowsFunction(false)
+                        }
                     }
-                }
-            })
+                })
+        }
+
     }, [userFound?.id, user])
 
     useEffect(() => {
