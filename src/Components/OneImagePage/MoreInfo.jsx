@@ -35,7 +35,7 @@ export default function MoreInfo() {
             {showCollectionsMenu ? <CollectionsMenu /> : null}
             <div className='list__container'>
 
-                {collectionsPerImage.map(c => <div className='list__container__collection__item'>
+                {collectionsPerImage.map(c => <div className='list__container__collection__item' key={c.id}>
                     <img src={image.link} alt="" />
                     <span>{c.name}</span>
                 </div>)}

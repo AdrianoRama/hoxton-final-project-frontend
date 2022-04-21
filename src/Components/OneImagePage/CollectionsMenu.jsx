@@ -54,8 +54,8 @@ export default function CollectionsMenu() {
         }
     }, [])
 
-    console.log('filteredCollections:', filteredCollections)
-    console.log('userFoundColl...', userFoundCollections)
+    // console.log('filteredCollections:', filteredCollections)
+    // console.log('userFoundColl...', userFoundCollections)
     //userFoundCollections delayed
 
     function saveImageToCollectionFunc(imageId, collectionId) {

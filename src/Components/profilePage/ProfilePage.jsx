@@ -76,7 +76,7 @@ function ProfilePage() {
                     }
                 })
         }
-    }, [userFound, user])
+    }, [userFound?.id, user])
 
     if (!user && !userFound) return <div>You must be logged in to view this page</div>
 

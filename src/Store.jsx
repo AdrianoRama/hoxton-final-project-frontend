@@ -20,6 +20,7 @@ export const useStore = create((set, get) => ({
     userSelected: false,
     imageSelected: true,
     searchValue: '',
+    followingForUser: [],
 
     togleUserSelected: (value) => set({ userSelected: value }),
     togleImageSelected: (value) => set({ imageSelected: value }),
@@ -268,6 +269,17 @@ export const useStore = create((set, get) => ({
 
     setChangeHeaderColor: (data) => {
         set({ changeHeaderColor: data })
-    }
+    },
+    getFollowingForUser: (id) => {
+        fetch(`http://localhost:4001/getFollowing/${id}`)
+                .then(resp => resp.json())
+                .then(data => {
+                    if (data.error) {
+                        alert(data.error)
+                    } else {
+                        set({followingForUser: data})
+                    }
+                })
+    } 
 }))
 

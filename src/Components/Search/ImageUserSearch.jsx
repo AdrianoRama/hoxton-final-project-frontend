@@ -17,6 +17,7 @@ export default function ImageUserSearch() {
     const navigate = useNavigate()
     const searchValue = useStore(store => store.searchValue)
     // const setSearchValue = useStore(store => store.setSearchValue)
+    console.log(searchValue)
 
     return (<>
         <div className="imageUserSearch">
@@ -24,13 +25,13 @@ export default function ImageUserSearch() {
                 <div className={imageSelected ? "imageSearch-active" : "imageSearch"} onClick={() => {
                     togleUserSelected(false)
                     togleImageSelected(true)
-                    navigate(`/home/search/images/${searchValue ? searchValue : ''}`)
+                    navigate(`/home/search/images/${searchValue}`)
                 }} >Image</div>
                 <div className={userSelected ? "userSearch-active" : "userSearch"}
                     onClick={() => {
                         togleUserSelected(true)
                         togleImageSelected(false)
-                        navigate(`/home/search/users/${searchValue ? searchValue : ''}`)
+                        navigate(`/home/search/users/${searchValue}`)
                     }}>User</div>
             </div>
         </div>

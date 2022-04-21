@@ -25,7 +25,7 @@ export default function UserFollowers() {
                     }
                 }
             })
-    }, [userFound, user])
+    }, [userFound?.id, user])
 
     useEffect(() => {
         if (user && userFound) {

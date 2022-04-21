@@ -1,5 +1,6 @@
 import { Button } from '@mui/material'
 import React, { useEffect, useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import { useStore } from '../../Store'
 
 export default function UserListItem({ u }) {
@@ -8,6 +9,7 @@ export default function UserListItem({ u }) {
     const user = useStore(store => store.user)
     const [userFollowsList, setUserFollowsList] = useState([])
     const [followed, setFollowed] = useState(false)
+    const navigate = useNavigate()
 
 
     function followUserFunc(username) {
@@ -23,7 +25,7 @@ export default function UserListItem({ u }) {
     }
 
     useEffect(() => {
-        fetch(`http://localhost:4001/getFollowing/${user.id}`).then(res => res.json()).then(data => {
+        fetch(`http://localhost:4001/getFollowing/${user?.id}`).then(res => res.json()).then(data => {
             if (data.error) {
                 alert(data.error)
             } else {
@@ -42,10 +44,10 @@ export default function UserListItem({ u }) {
 
         <div className='userList-container'>
             <div className="image__div">
-                <img src={u.avatar} alt="" />
+                <img src={u.avatar} alt="" onClick={() => navigate(`/home/${u.username}`)} />
             </div>
 
-            <div className='user__info'>
+            <div className='user__info' onClick={() => navigate(`/home/${u.username}`)} >
                 <h3>{u.name}</h3>
                 <p>@{u.username}</p>
             </div>
@@ -63,6 +65,7 @@ export default function UserListItem({ u }) {
                     onClick={(e) => {
 
                         followUserFunc(u.username)
+                        console.log(u.username)
 
                     }}
                 >{followed ? 'Following' : 'Follow'}</Button>
