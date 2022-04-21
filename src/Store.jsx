@@ -22,6 +22,18 @@ export const useStore = create((set, get) => ({
     searchValue: '',
     followingForUser: [],
     showUploadForm: false,
+    userFoundCreatedImages: [],
+
+    getUserCreatedImages: (id) => {
+        fetch(`http://localhost:4001/images/${id}`).then(res => res.json())
+            .then(data => {
+                if (data.error) {
+                    alert(data.error)
+                } else {
+                    set({ userFoundCreatedImages: data })
+                }
+            })
+    },
 
     setShowUploadForm: (val) => set({ showUploadForm: val }),
     togleUserSelected: (value) => set({ userSelected: value }),

@@ -25,6 +25,8 @@ function ProfilePage() {
     const setUserFollowsFunction = useStore(store => store.setUserFollowsFunction)
     const followUser = useStore(store => store.followUser)
     const unfollowUser = useStore(store => store.unfollowUser)
+    const getUserCreatedImages = useStore(store => store.getUserCreatedImages)
+    const userFoundCreatedImages = useStore(store => store.userFoundCreatedImages)
 
     const validate = useStore(store => store.validate)
 
@@ -40,6 +42,7 @@ function ProfilePage() {
     useEffect(() => {
         if (userFound) {
             getUserImages(params.username)
+            getUserCreatedImages(userFound?.id)
 
         }
     }, [params.username, userFound, user])
@@ -133,7 +136,7 @@ function ProfilePage() {
             <div className='profile_main'>
                 <div className="profile-section">
                     <ul className='profile_ul'>
-                        <p className='profile_li' onClick={() => { navigate(`/home/${params.username}`) }}>{userFoundImages.length} Images</p>
+                        <p className='profile_li' onClick={() => { navigate(`/home/${params.username}`) }}>{userFoundImages.length + userFoundCreatedImages.length} Images</p>
                         <p className='profile_li' onClick={() => { navigate(`/home/${params.username}/board`) }}> {userFoundCollections.length} Boards</p>
                         <p className='profile_li' onClick={() => { navigate(`/home/${params.username}/following`) }}>{userFollowing.length} Following</p>
                         <p className='profile_li' onClick={() => { navigate(`/home/${params.username}/followedBy`) }}>{userFollowers.length} Followers</p>

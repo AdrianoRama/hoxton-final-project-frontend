@@ -10,7 +10,7 @@ export default function SavedImages({ setSaved, saved }) {
     const user = useStore(store => store.user)
     const navigate = useNavigate()
     const userFoundImages = useStore(store => store.userFoundImages)
-
+    const userFoundCreatedImages = useStore(store => store.userFoundCreatedImages)
 
     const breakpoints = {
         default: 5,
@@ -33,6 +33,13 @@ export default function SavedImages({ setSaved, saved }) {
                 className="my-masonry-grid"
                 columnClassName="my-masonry-grid_column">
                 {userFoundImages?.map(image => (
+                    <>
+                        <div className="app__main-img" onClick={() => { navigate(`/oneImage/${image.id}`) }} >
+                            <img key={image.id} src={image.link} alt="" />
+                        </div>
+                    </>
+                ))}
+                {userFoundCreatedImages?.map(image => (
                     <>
                         <div className="app__main-img" onClick={() => { navigate(`/oneImage/${image.id}`) }} >
                             <img key={image.id} src={image.link} alt="" />
