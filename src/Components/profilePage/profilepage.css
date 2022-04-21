@@ -78,6 +78,7 @@
 .profile_followedUser {
     display: grid;
     place-content: center;
+    cursor: pointer;
 }
 
 .profile_followedUser img {
