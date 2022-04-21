@@ -10,6 +10,7 @@ export default function Header({ setProfVisible, profVisible, setAddVisible, add
     const navigate = useNavigate()
     let user = useStore(store => store.user)
     const changeHeaderColor = useStore(store => store.changeHeaderColor)
+    const setShowUploadForm = useStore(store => store.setShowUploadForm)
 
     function logout() {
         navigate('/welcome')
@@ -33,7 +34,9 @@ export default function Header({ setProfVisible, profVisible, setAddVisible, add
                 <div className="app__header-add">
                     <AddBoxOutlined onMouseOver={() => { setAddVisible(true), setProfVisible(false) }} className='nav-add' />
                     <div className={addVisible ? 'add-drop' : 'add-drop-off'}>
-                        <p>Upload</p>
+                        <p onClick={() => {
+                            setShowUploadForm(true)
+                        }}>Upload</p>
                         <p>New board</p>
                     </div>
                 </div>

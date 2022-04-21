@@ -24,6 +24,7 @@ import SearchMain from './Components/Search/SearchMain'
 import ImageMain from './Components/Search/ImageMain'
 import ColorMain from './Components/Search/ColorMain'
 import UsersSearched from './Components/Search/UsersSearched'
+import UploadImage from './Components/UploadImage/UploadImage'
 
 
 function App() {
@@ -35,7 +36,7 @@ function App() {
   const setShowUserList = useStore(store => store.setShowUserList)
   const [showColorPalette, setShowColorPalette] = useState(false)
 
-
+  const showUploadForm = useStore(store => store.showUploadForm)
 
   useEffect(() => {
     validate()
@@ -48,6 +49,7 @@ function App() {
       setProfVisible(false), setAddVisible(false), setShowUserList(false)
     }} className="App">
       {showColorPalette ? <Colors setShowColorPalette={setShowColorPalette} /> : null}
+      {showUploadForm ? <UploadImage /> : null}
       <Routes>
         <Route index element={<Navigate replace to={'/welcome'} />} />
         <Route path='/welcome' element={<WelcomePage />} />

@@ -21,7 +21,10 @@ export const useStore = create((set, get) => ({
     imageSelected: true,
     searchValue: '',
     followingForUser: [],
+    showUploadForm: false,
 
+
+    setShowUploadForm: (val) => set({ showUploadForm: val }),
     togleUserSelected: (value) => set({ userSelected: value }),
     togleImageSelected: (value) => set({ imageSelected: value }),
 
@@ -272,14 +275,14 @@ export const useStore = create((set, get) => ({
     },
     getFollowingForUser: (id) => {
         fetch(`http://localhost:4001/getFollowing/${id}`)
-                .then(resp => resp.json())
-                .then(data => {
-                    if (data.error) {
-                        alert(data.error)
-                    } else {
-                        set({followingForUser: data})
-                    }
-                })
-    } 
+            .then(resp => resp.json())
+            .then(data => {
+                if (data.error) {
+                    alert(data.error)
+                } else {
+                    set({ followingForUser: data })
+                }
+            })
+    }
 }))
 
