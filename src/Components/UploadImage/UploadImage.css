@@ -4,7 +4,7 @@
     max-width: 100vw;
     left: 0;
     right: 0;
-    z-index: 10;
+    z-index: 50;
     top: 0;
     bottom: 0;
     display: flex;
@@ -12,7 +12,7 @@
     align-items: center;
 }
 
-.upload__image__container form {
+.upload__image__container__form {
     /* background-color: #2e36ff; */
     background-color: #0C0C0C;
     width: 100%;
@@ -23,6 +23,7 @@
     flex-direction: column;
     gap: 4rem;
     position: relative;
+
 }
 
 .upload__image__container h1 {
@@ -58,4 +59,31 @@
 
 .remove-btn:active {
     transform: scale(0.9);
+}
+
+.success-msg {
+    color: #1976d2;
+    font-size: 2rem;
+}
+
+.try-btn {
+    animation: tryAgain 3s ease-in-out infinite;
+}
+
+@keyframes tryAgain {
+    25% {
+        opacity: 0;
+    }
+
+    50% {
+        opacity: 1;
+    }
+
+    75% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
 }

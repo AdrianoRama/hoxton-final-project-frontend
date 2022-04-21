@@ -23,7 +23,6 @@ export const useStore = create((set, get) => ({
     followingForUser: [],
     showUploadForm: false,
 
-
     setShowUploadForm: (val) => set({ showUploadForm: val }),
     togleUserSelected: (value) => set({ userSelected: value }),
     togleImageSelected: (value) => set({ imageSelected: value }),
