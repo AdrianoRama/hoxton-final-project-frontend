@@ -34,29 +34,37 @@ export default function UsersSearchedItem({ follow }) {
         <div className='followingItem__container'>
             <div className='profile_followedUser' key={follow.id}>
                 <img src={follow.avatar} alt="" onClick={() => navigate(`/home/${follow.username}`)} />
-                <span className='profile_followingUser' onClick={() => navigate(`/home/${follow.username}`)} >{follow.name}</span>
-                {followed ? <button onClick={() => { unfollowUser(follow.username).then(data => {
-                    if(data.error) {
-                        alert(data.error)
-                    } else {
-                        setFollowed(false)
-                    } } )
-                
+                <span className='profile_followingUser' onClick={() => navigate(`/home/${follow.username}`)} >{follow.id === user?.id ? 'You' : follow.name}</span>
+                {follow.id === user?.id ? null : followed ? <button onClick={() => {
+                    unfollowUser(follow.username).then(data => {
+                        if (data.error) {
+                            alert(data.error)
+                        } else {
+                            setFollowed(false)
+                        }
+                    })
+
                     console.log(follow.username)
-                
+
                 }
                 } >Following</button>
-                 : <button onClick={() => { followUser(follow.username).then(data => {
-                    if(data.error) {
-                        alert(data.error)
-                    } else {
-                        setFollowed(true)
-                    } } ) }} >Follow</button>}
+                    : <button onClick={() => {
+                        followUser(follow.username).then(data => {
+                            if (data.error) {
+                                alert(data.error)
+                            } else {
+                                setFollowed(true)
+                            }
+                        })
+                    }} >Follow</button>}
             </div>
-            <div className='followingItem__user-photos'>
+            <div className='followingItem__user-photos'
+            >
                 {
                     follow.images?.map(photo => {
-                        return <img src={photo.link} alt="" key={photo.id} />
+                        return <img src={photo.link} alt="" key={photo.id} onClick={() => {
+                            navigate(`/oneImage/${photo.id}`)
+                        }} />
                     })
                 }
             </div>
