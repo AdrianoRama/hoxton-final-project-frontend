@@ -4,6 +4,7 @@ import { useEffect } from 'react'
 import { useStore } from '../../Store'
 import Main from '../Main/Main'
 import { Avatar, Input } from '@mui/material'
+import { useNavigate } from 'react-router-dom'
 
 
 export default function SearchMain({ setSaved, saved }) {
@@ -13,6 +14,7 @@ export default function SearchMain({ setSaved, saved }) {
     setChangeHeaderColor(false)
     const users = useStore(store => store.users)
     const getUsers = useStore(store => store.getUsers)
+    const navigate = useNavigate()
 
     useEffect(() => {
         getUsers()
@@ -28,7 +30,9 @@ export default function SearchMain({ setSaved, saved }) {
                     <div className="app__searchPage_user-wrapper">
                         {users.map(user => (
                             <>
-                                <div className="user-info">
+                                <div className="user-info" onClick={() => {
+                                    navigate(`/home/${user.username}`)
+                                }}>
                                     <img src={user.images[0]?.link} alt="" />
 
                                     <div className="username-avatar">
