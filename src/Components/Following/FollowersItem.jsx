@@ -8,6 +8,7 @@ export default function FollowingItem({ follow, following }) {
 
     const [followed, setFollowed] = useState(false)
     const userFollows = useStore(store => store.userFollows)
+    const user = useStore(store => store.user)
     const navigate = useNavigate()
 
     useEffect(() => {
@@ -18,14 +19,18 @@ export default function FollowingItem({ follow, following }) {
         } else {
             setFollowed(false)
         }
+
     }, [following])
+
 
     return (
         <div className='followingItem__container'>
             <div className='profile_followedUser' key={follow.id} onClick={() => navigate(`/home/${follow.username}`)} >
                 <img src={follow.avatar} alt="" />
-                <span className='profile_followingUser'>{follow.name}</span>
-                <button>{followed ? 'Following' : 'Follow'}</button>
+                <span className='profile_followingUser'>{follow.id === user?.id ? 'You' : follow.name}</span>
+
+                {follow.id === user?.id ? null : <button>{followed ? 'Following' : 'Follow'}</button>}
+
             </div>
             <div className='followingItem__user-photos'>
                 {

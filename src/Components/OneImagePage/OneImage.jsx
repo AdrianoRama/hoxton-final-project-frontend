@@ -41,8 +41,6 @@ export default function OneImage({ setSaved }) {
             getUserImages(user?.username)
         }
 
-
-
     }, [user])
 
     console.log('Already saved: ', alreadySaved)
@@ -88,6 +86,7 @@ export default function OneImage({ setSaved }) {
     }, [userFoundCreatedImages])
 
     console.log('user images', userFoundImages)
+    console.log('belongs to user:', belongsToUser)
 
     return (
         <div className="oneImage">

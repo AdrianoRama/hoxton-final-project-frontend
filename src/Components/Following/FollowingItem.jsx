@@ -7,6 +7,7 @@ import { useNavigate } from 'react-router-dom';
 export default function FollowingItem({ follow, following }) {
     const [followed, setFollowed] = useState(false)
     const navigate = useNavigate()
+    const user = useStore(store => store.user)
 
     useEffect(() => {
 
@@ -20,10 +21,13 @@ export default function FollowingItem({ follow, following }) {
 
     return (
         <div className='followingItem__container'>
-            <div className='profile_followedUser' key={follow.id} onClick={() => navigate(`/home/${follow.username}`)}>
+            <div className='profile_followedUser' key={follow.id} onClick={(e) => {
+                navigate(`/home/${follow.username}`)
+            }
+            } >
                 <img src={follow.avatar} alt="" />
-                <span className='profile_followingUser'>{follow.name}</span>
-                <button>{followed ? 'Following' : 'Follow'}</button>
+                <span className='profile_followingUser'>{follow.id === user?.id ? 'You' : follow.name}</span>
+                {follow.id === user?.id ? null : <button>{followed ? 'Following' : 'Follow'}</button>}
             </div>
             <div className='followingItem__user-photos'>
                 {

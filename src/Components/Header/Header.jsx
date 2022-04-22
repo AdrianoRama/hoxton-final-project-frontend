@@ -28,7 +28,7 @@ export default function Header({ setProfVisible, profVisible, setAddVisible, add
                     <Search className='nav-search' />
                 </div>
                 <div className="app__header-notif">
-                    <Badge className='notif-nr' badgeContent={1} color="primary"></Badge>
+                    <Badge className='notif-nr' badgeContent={0} color="primary"></Badge>
                     <NotificationsNoneOutlined className='nav-notif' />
                 </div>
                 <div className="app__header-add">

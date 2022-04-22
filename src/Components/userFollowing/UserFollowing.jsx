@@ -12,19 +12,22 @@ function UserFollowing() {
     const user = useStore(store => store.user)
 
     useEffect(() => {
-        fetch(`http://localhost:4001/getFollowing/${userFound?.id}`)
-            .then(resp => resp.json())
-            .then(data => {
-                if (data.error) {
-                    alert(data.error)
-                } else {
-                    setFollowing(data)
-                }
-            })
+        if (userFound) {
+            fetch(`http://localhost:4001/getFollowing/${userFound?.id}`)
+                .then(resp => resp.json())
+                .then(data => {
+                    if (data.error) {
+                        alert(data.error)
+                    } else {
+                        setFollowing(data)
+                    }
+                })
+        }
+
     }, [userFound?.id])
 
     useEffect(() => {
-        if (user && userFound) {
+        if (user) {
             fetch(`http://localhost:4001/getFollowing/${user?.id}`)
                 .then(resp => resp.json())
                 .then(data => {
