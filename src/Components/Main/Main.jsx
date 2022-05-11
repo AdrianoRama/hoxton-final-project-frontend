@@ -66,14 +66,12 @@ export default function Main({ setSaved, saved }) {
                 className="my-masonry-grid"
                 columnClassName="my-masonry-grid_column">
                 {images?.map(image => (
-                    <>
-                        <div className="app__main-img" onClick={() => { navigate(`/oneImage/${image.id}`) }} >
-                            <img key={image.id} src={image.link} alt="" />
-                            <div className="app__main-save">
-                                <AddBox style={{ fontSize: 50 }} className='addBox' onClick={(e) => { myClickHandler(e), saveImg(image.id) }} />
-                            </div>
+                    <div className="app__main-img" key={image.id} onClick={() => { navigate(`/oneImage/${image.id}`) }} >
+                        <img key={image.id} src={image.link} alt="" />
+                        <div className="app__main-save">
+                            <AddBox style={{ fontSize: 50 }} className='addBox' onClick={(e) => { myClickHandler(e), saveImg(image.id) }} />
                         </div>
-                    </>
+                    </div>
                 ))}
             </Masonry>
         </div>
